@@ -1,0 +1,264 @@
+
+<html>
+    <head>
+    <title>&amp;</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+    <style>
+                body {
+                  margin: 0;
+                  font-family: 'Kanit', sans-serif;
+                  color:#fff;
+                }
+                
+                .neonText {
+                    color: #fff;
+                    text-shadow:
+                      0 0 7px #fff,
+                      0 0 10px #fff,
+                      0 0 21px #fff,
+                      0 0 42px #0fa,
+                      0 0 82px #0fa,
+                      0 0 92px #0fa,
+                      0 0 102px #0fa,
+                      0 0 151px #0fa;
+                  }
+                .pulsate {
+                     animation: pulsate 1.5s infinite alternate;     
+                }
+                
+                @keyframes pulsate {
+        
+                  100% {
+                
+                      text-shadow:
+                      0 0 4px #fff,
+                      0 0 11px #fff,
+                      0 0 19px #fff,
+                      0 0 40px #0fa,
+                      0 0 80px #0fa,
+                      0 0 90px #0fa,
+                      0 0 100px #0fa,
+                      0 0 150px #0fa;
+                  
+                  }
+                  
+                  0% {
+                
+                    text-shadow:
+                    0 0 2px #fff,
+                    0 0 4px #fff,
+                    0 0 6px #fff,
+                    0 0 10px #0fa,
+                    0 0 45px #0fa,
+                    0 0 55px #0fa,
+                    0 0 70px #0fa,
+                    0 0 80px #0fa;
+                
+                    }
+                }
+    
+                
+                .hero-image {
+                    background-color: #000000;
+                    /* height: 100%; */
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    position: relative;
+                }
+                            
+                .hero-text {
+                  text-align: center;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  color: white;
+                }
+                #demo{
+                    /*margin-top: 550px;*/
+                    border: 0 solid #fff;
+                    padding-top:28%;
+                }
+                .white {
+                color: white;
+                }
+    
+                .yellow {
+                color: yellow;
+                }
+    
+                #countmember {
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    margin: 0;
+                    padding-right: 5px;
+                    font-size: 10px;
+                }
+                    .hero-image { background-image: url(BGRandom.png);}
+                    div#demo{ padding-top:20%;}
+                    div#demo>p.fclass{font-size: 92px;margin: 0;}
+                    div#demo>p.sclass{font-size: 30px;margin: 0;margin-top: -8px;}
+                    div#demo>p.tclass{font-size: 32px;margin: 0;margin-top: -13px; display:none;}
+                    </style> 
+    </head>
+    <body class="hero-image">
+    <p id="countmember"></p>
+    <div align='center' id="demo" class="neonText  pulsate"></div>
+    <script>
+            $( document ).ready(function() {
+                var t1=1;
+                var t2=1;
+                var myVar=1;
+                var myVar2=1;
+                var myVar3=1;
+                var onk="";
+                var getdata="";
+                var countdata="";           
+                var php_var = "";
+                var applicationConfig = {
+                    clientID: "8a6e3ff9-21c3-422c-873d-50537a3f4464",
+                    graphEndpoint: "getdata/"
+                };
+                if(php_var=="")
+                {
+                    funCheckWidth();
+                }
+                $("#demo").html("<p class='fclass'>XXXXX XXXXXX</p><p class='sclass'>xxxxx xxxxx</p>");
+                function funGetdata(applicationConfig) {
+                    $.ajaxSetup({async:false});  //execute synchronously
+                    var returnData = null;  //define returnData outside the scope of the callback function
+                    $.post(applicationConfig.graphEndpoint, { clientID: applicationConfig.clientID}, function(data) {
+                        returnData = data;
+                    },"json");
+                    $.ajaxSetup({async:true});  //return to default setting
+                    return returnData;
+                }
+                function fununlucky(staffid){
+                    $.post("getdata/updatestaffid.php",{
+                        staffid: staffid
+                    },function(data, status){
+                        console.log(data+", "+status);
+                    });
+                }
+    
+                function funcleardb(){
+                    $.post("getdata/cleardata.php",{
+                        tsp: event.timeStamp
+                    },function(data, status){
+                        console.log(data+", "+status);
+                    });
+                }
+    
+                function funCheckWidth(){
+                    $.post("getdata/checkwidth.php",{
+                        width: screen.width
+                    },function(data, status){
+                        if(data==1024)
+                        {
+                            //window.location.replace("https://youthinkabout.com/homepro/?sc=1024");
+                            console.log(data);
+                        }else if(data==800){
+                            //window.location.replace("https://youthinkabout.com/homepro/?sc=800");
+                            console.log(data);
+                        }
+                    });
+                }
+    
+                $(".hero-image").keypress(function(event){
+                    if(event.which==114){
+                        if(event.which==onk){
+                            onk=event.which;
+                            console.log("R2");
+                        }else{
+                            onk=event.which;
+                            console.log("R");
+                            getdata = funGetdata(applicationConfig);
+                            countdata=getdata[0].count;
+                            $("#countmember").html(countdata);
+                            console.log(countdata);
+                            t1=1;
+                            clearInterval(myVar3);
+                            clearInterval(myVar2);
+                            myVar = setInterval(myTimer, 50);
+                        }
+                    }
+    
+                    if(event.which==13){
+                        if(event.which==onk){
+                            onk=event.which;
+                            console.log("Enter2");
+                        }else{
+                            if(onk==114){
+                                onk=event.which;
+                                console.log("Enter");
+                                clearInterval(myVar);
+                                t2=1;
+                                clearInterval(myVar3);
+                                clearInterval(myVar);
+                                myVar2 = setInterval(myTimer2, 80);
+                            }
+                        }
+                    }
+    
+                    if(event.which==115){
+                        if(event.which==onk){
+                            onk=event.which;
+                        }else{
+                            onk=event.which;
+                            clearInterval(myVar3);
+                            clearInterval(myVar2);
+                            clearInterval(myVar);
+                            console.log("S");
+                            $("#demo>p").css({ 'color': 'white'});
+                            $("#demo").html("<p class='fclass'>XXXXX XXXXXX</p><p class='sclass'>xxxxx xxxxx</p>");
+                        }
+                    }
+    
+                    if(event.which==99){
+                            clearInterval(myVar3);
+                            clearInterval(myVar2);
+                            clearInterval(myVar);
+                            funcleardb();
+                            console.log("C");
+                            $("#demo>p").css({ 'color': 'white'});
+                            $("#demo").html("<p class='fclass'>XXXXX XXXXXX</p><p class='sclass'>xxxxx xxxxx</p>");
+                    }
+    
+                    function myTimer() {
+                        var i =Math.round(Math.random() * countdata);
+                        console.log(i);
+                        $("#demo").html("<p class='fclass'>" + getdata[0].staffmember[i].empname +"</p><p class='sclass'>" + getdata[0].staffmember[i].company + "</p><p class='tclass'>"+ getdata[0].staffmember[i].position+"</p>");
+                        t1++;
+                    }
+    
+                    function myTimer2() {
+                        var i =Math.round(Math.random() * countdata);
+                        if(t2==10){
+                            clearInterval(myVar2);
+                            $("#demo").html("<p class='fclass'>" + getdata[0].staffmember[i].empname +"</p><p class='sclass'>" + getdata[0].staffmember[i].company + "</p><p class='tclass'>"+ getdata[0].staffmember[i].position+"</p>");
+                            console.log(i);
+                            myVar3 = setInterval(changecolor, 150);
+                            fununlucky(getdata[0].staffmember[i].staffid);
+                            //var myVar2 = setInterval(myTimer2, 1000);
+                        }else{
+                            clearInterval(myVar3);
+                            //$("#demo").css({ 'color': 'red', 'font-size': '150%' });
+                            console.log(i);
+                            $("#demo").html("<p class='fclass'>" + getdata[0].staffmember[i].empname +"</p><p class='sclass'>" + getdata[0].staffmember[i].company + "</p><p class='tclass'>"+ getdata[0].staffmember[i].position+"</p>");
+                        }
+                        t2++;
+                    }
+    
+                    function changecolor(){
+                        $("#demo>p").delay(5000).toggleClass('white').toggleClass('yellow');
+                    }
+                });        
+            });
+            </script>
+    </body>
+    </html>

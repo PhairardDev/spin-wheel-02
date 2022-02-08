@@ -1,0 +1,12 @@
+#User status 
+active = '1';
+inactive = '0';
+
+#Coupons status
+ยกเลิก == '2'
+ยังไม่ได้ใช้งาน == '1'
+ใช้งานแล้ว == '0'
+
+#Rewards status
+active = '1';
+inactive = '0';
