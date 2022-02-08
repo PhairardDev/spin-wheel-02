@@ -62,7 +62,7 @@ if (isset($_POST['signup'])){
                 $stmt->bindParam(":craeteBy", $createBy);
                 $stmt->execute();
 
-                $_SESSION['success'] = 'เพิ่มข้อมูลสำเร็จ <a href="signin.php" class="alert-link">เข้าสู่ระบบ</a>';
+                $_SESSION['success'] = 'เพิ่มข้อมูลสำเร็จ';
                 header("location:user-add.php");
 
             } else {
