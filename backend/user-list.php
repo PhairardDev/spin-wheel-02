@@ -78,8 +78,16 @@ foreach($queryUser as $row){
                     <td><?php echo $row['username'] ?></td>
                     <td><?php echo $row['fullname'] ?></td>
                     <td><?php echo $row['email'] ?></td>
-                    <td><?php echo $row['createBy'] ?></td>
-                    <td><?php echo $row['createBy'] ?></td>
+                    <td><?php $queryUsername =$conn->query("SELECT `username` FROM `users` WHERE `id` = ".$row['createBy']);
+                    $queryUsername->execute();
+                    $username = $queryUsername->fetch(PDO::FETCH_ASSOC);
+                    echo $username['username']; ?></td>
+                    <td>
+                      <?php $queryLog =$conn->query("SELECT `loginDate` FROM `access_logs` WHERE `userId` = ".$row['id']." ORDER BY `id` DESC LIMIT 1");
+                    $queryLog->execute();
+                    $whenAccess = $queryLog->fetch(PDO::FETCH_ASSOC);
+                    echo $whenAccess['loginDate']; ?>
+                    </td>
                     <td><?php if($row['status']=='1') { echo 'ปกติ'; } else { echo 'ระงับการใช้งาน'; } ?></td>
                     <td></td>
                   </tr>
