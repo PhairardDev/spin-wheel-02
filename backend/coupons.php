@@ -44,6 +44,32 @@
     <div class="content">
       <div class="container-fluid">
 
+        <!-- DataTales Example -->
+        <div class="card mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">สร้างโค้ดใหม่</h6>
+                        </div>
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-sm-2">
+                              <div class="form-group">
+                                <label for="numberOfCode" class="form-label">ใส่จำนวนโค้ดที่ต้องการสร้าง</label>
+                                <input type="number" class="form-control" id="numberOfCode" name="numberOfCode" aria-describedby="Number Of Code">
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <div class="form-group">
+                                <label for="customerUser" class="form-label">Username ของลูกค้า</label>
+                                <input type="text" class="form-control" id="customerUser" name="customerUser" aria-describedby="Customer User">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card-footer">
+                          <button type="submit" class="btn btn-primary" name="signup">สร้างโค้ด</button>
+                        </div>
+        </div>
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
