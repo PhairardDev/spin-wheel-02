@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>โค้ด - Spin Dashboard</title>
+  <title>จัดการโค้ด - Spin Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -32,7 +32,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1 class="m-0">โค้ด</h1>
+            <h1 class="m-0">โค้ดหมุนวงล้อ</h1>
           </div><!-- /.col -->
           
         </div><!-- /.row -->
@@ -51,13 +51,13 @@
                         </div>
                         <div class="card-body">
                           <div class="row">
-                            <div class="col-sm-2">
+                            <div class="col-lg-4">
                               <div class="form-group">
                                 <label for="numberOfCode" class="form-label">ใส่จำนวนโค้ดที่ต้องการสร้าง</label>
                                 <input type="number" class="form-control" id="numberOfCode" name="numberOfCode" aria-describedby="Number Of Code">
                               </div>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6 col-lg-4">
                               <div class="form-group">
                                 <label for="customerUser" class="form-label">Username ของลูกค้า</label>
                                 <input type="text" class="form-control" id="customerUser" name="customerUser" aria-describedby="Customer User">
