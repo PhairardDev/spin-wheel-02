@@ -1,5 +1,29 @@
 <?php 
     include 'header.php';
+    include_once("models/couponsModel.php");
+
+    $insertdata = new Coupons();
+
+    if(isset($_POST['createCode'])){
+      
+      $num = $_POST['numberOfCode'];
+      $customerUser = $_POST['customerUser'];
+      $createBy = $_SESSION['admin_login'];
+      //$now = date('Y-m-d');
+      $endDate = date('Y-m-d', strtotime("+1 day"));
+      $status = '1';
+      
+      $sql = $insertdata->insert($num, $customerUser, $createBy, $endDate, $status);
+
+      if($sql){
+          echo "<script>alert('สร้างโค้ดสำเร็จ');</script>";
+          echo "<script>window.location.href='coupons.php';</script>";
+      } else {
+          echo "<script>alert('มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้ง');</script>";
+          echo "<script>window.location.href='coupons.php';</script>";
+      }
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,24 +74,27 @@
                             <h6 class="m-0 font-weight-bold text-primary">สร้างโค้ดใหม่</h6>
                         </div>
                         <div class="card-body">
+                          <form action="" method="post" requireed>
                           <div class="row">
                             <div class="col-lg-4">
                               <div class="form-group">
                                 <label for="numberOfCode" class="form-label">ใส่จำนวนโค้ดที่ต้องการสร้าง</label>
-                                <input type="number" class="form-control" id="numberOfCode" name="numberOfCode" aria-describedby="Number Of Code">
+                                <input type="number" class="form-control" id="numberOfCode" name="numberOfCode" aria-describedby="Number Of Code" required>
+                                <span class="info">กรอกตัวเลขเท่านั้น</span>
                               </div>
                             </div>
                             <div class="col-sm-6 col-lg-4">
                               <div class="form-group">
                                 <label for="customerUser" class="form-label">Username ของลูกค้า</label>
-                                <input type="text" class="form-control" id="customerUser" name="customerUser" aria-describedby="Customer User">
+                                <input type="text" class="form-control" id="customerUser" name="customerUser" aria-describedby="Customer User" required>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="card-footer">
-                          <button type="submit" class="btn btn-primary" name="signup">สร้างโค้ด</button>
+                          <button type="submit" class="btn btn-primary" name="createCode">สร้างโค้ด</button>
                         </div>
+                        </form>
         </div>
 
                     <!-- DataTales Example -->
@@ -91,77 +118,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                        $sql = $insertdata->fetchdata();
+                                        $i = 1;
+                                        while($row = mysqli_fetch_array($sql)){ 
+                                    ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>AsyTUj&87</td>
-                                            <td>Tuup</td>
-                                            <td>2011/04/25</td>
-                                            <td>2011/04/25</td>
-                                            <td>2011/04/25</td>
-                                            <td>ใช้แล้ว</td>
-                                            <td>ไม่ได้รางวัล</td>
+                                            <td><?php echo $i++; ?></td>
+                                            <td><?php echo $row['couponsCode'];?></td>
+                                            <td><?php echo $row['customerUsername'];?></td>
+                                            <td><?php echo $row['createDate'];?></td>
+                                            <td><?php echo $row['used'];?></td>
+                                            <td><?php echo $row['endDate'];?></td>
+                                            <td><?php if($row['status']=='1'){echo 'ยังไม่ได้ใช้งาน';}
+                                            else if($row['status']=='0'){ echo 'ใช้งานแล้ว'; }
+                                            else{echo 'โค้ดหมดอายุ';}?></td>
+                                            <td><?php echo $row['status'];?></td>
                                         </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>AsyTUj&87</td>
-                                            <td>jojo</td>
-                                            <td>2011/04/25</td>
-                                            <td>2011/04/25</td>
-                                            <td>2011/04/25</td>
-                                            <td>ใช้แล้ว</td>
-                                            <td>ไม่ได้รางวัล</td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>AsyTUj&87</td>
-                                            <td>jojo</td>
-                                            <td>2011/04/25</td>
-                                            <td>2011/04/25</td>
-                                            <td>2011/04/25</td>
-                                            <td>ใช้แล้ว</td>
-                                            <td>ไม่ได้รางวัล</td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>AsyTUj&87</td>
-                                            <td>jojo</td>
-                                            <td>2011/04/25</td>
-                                            <td>2011/04/25</td>
-                                            <td>2011/04/25</td>
-                                            <td>ใช้แล้ว</td>
-                                            <td>ไม่ได้รางวัล</td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>AsyTUj&87</td>
-                                            <td>jojo</td>
-                                            <td>2011/04/25</td>
-                                            <td>2011/04/25</td>
-                                            <td>2011/04/25</td>
-                                            <td>ใช้แล้ว</td>
-                                            <td>ไม่ได้รางวัล</td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>AsyTUj&87</td>
-                                            <td>jojo</td>
-                                            <td>2011/04/25</td>
-                                            <td>2011/04/25</td>
-                                            <td>2011/04/25</td>
-                                            <td>ใช้แล้ว</td>
-                                            <td>ไม่ได้รางวัล</td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td>AsyTUj&87</td>
-                                            <td>jojo</td>
-                                            <td>2011/04/25</td>
-                                            <td>2011/04/25</td>
-                                            <td>2011/04/25</td>
-                                            <td>ใช้แล้ว</td>
-                                            <td>ไม่ได้รางวัล</td>
-                                        </tr>
-                                        
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -182,7 +156,7 @@
 
   <!-- Main Footer -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2022 <a href="https://adminlte.io">SPINDASH</a>.</strong>
+    <strong>Copyright &copy; 2022 <a href="https://adminlte.io">SPIN DASH</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1

@@ -86,7 +86,7 @@ foreach($queryUser as $row){
                       <?php $queryLog =$conn->query("SELECT `loginDate` FROM `access_logs` WHERE `userId` = ".$row['id']." ORDER BY `id` DESC LIMIT 1");
                     $queryLog->execute();
                     $whenAccess = $queryLog->fetch(PDO::FETCH_ASSOC);
-                    echo $whenAccess['loginDate']; ?>
+                    if(isset($whenAccess['loginDate'])) { echo $whenAccess['loginDate']; } else { echo 'Never';} ?>
                     </td>
                     <td><?php if($row['status']=='1') { echo 'ปกติ'; } else { echo 'ระงับการใช้งาน'; } ?></td>
                     <td></td>
