@@ -28,6 +28,7 @@ CREATE TABLE coupons (
     rewardName VARCHAR(255) NOT NULL,
     rewardType VARCHAR(255) NOT NULL,
     randomPercent INT(6),
+    totalPerTime INT(6),
     totalItems int(5),
     balanceItems int(5),
     startDate DATE,

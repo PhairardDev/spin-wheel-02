@@ -1,5 +1,7 @@
 <?php 
     include 'header.php';
+    require("models/rewardsModel.php");
+    $insertdata = new Rewards();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,39 +62,27 @@
                     <th>จำนวนรางวัลที่จะได้</th>
                     <th>รับได้สูงสุด/ครั้ง</th>
                     <th>จำนวนคงเหลือ/ครั้ง</th>
-                    <th>รอบการเคลียร์รางวัล</th>
                     <th>ระยะเวลาของรางวัล</th>
+                    <th>สถานะ</th>
                     <th>จัดการ</th>
                   </tr>
                   </thead>
                   <tbody>
-<?php 
-
-$i=1;
-$queryUser = $conn->query("SELECT * FROM users ORDER BY id ASC");
-$queryUser->execute();
-
-foreach($queryUser as $row){
-                  
-?>    
+                  <?php
+                                        $sql = $insertdata->fetchdata();
+                                        $i = 1;
+                                        while($row = mysqli_fetch_array($sql)){ 
+                                    ?>  
                   <tr>
                     <td><?php echo $i++; ?></td>
                     <td><?php echo $row['rewardName'] ?></td>
                     <td><?php echo $row['randomPercent'] ?></td>
-                    <td><?php echo $row['email'] ?></td>
-                    <td><?php $queryUsername =$conn->query("SELECT `username` FROM `users` WHERE `id` = ".$row['createBy']);
-                    $queryUsername->execute();
-                    $username = $queryUsername->fetch(PDO::FETCH_ASSOC);
-                    echo $username['username']; ?></td>
-                    <td>
-                      <?php $queryLog =$conn->query("SELECT `loginDate` FROM `access_logs` WHERE `userId` = ".$row['id']." ORDER BY `id` DESC LIMIT 1");
-                    $queryLog->execute();
-                    $whenAccess = $queryLog->fetch(PDO::FETCH_ASSOC);
-                    if(isset($whenAccess['loginDate'])) { echo $whenAccess['loginDate']; } else { echo 'Never';} ?>
-                    </td>
-                    <td><?php if($row['status']=='1') { echo 'ปกติ'; } else { echo 'ระงับการใช้งาน'; } ?></td>
-                    <td></td>
-                    <td></td>
+                    <td><?php echo $row['rewardType'] ?></td>
+                    <td><?php echo $row['totalPerTime'] ?></td>
+                    <td><?php echo $row['totalItems'] ?></td>
+                    <td><?php echo $row['balanceItems'] ?></td>
+                    <td><?php echo $row['startDate'] .'-'. $row['endDate']  ?></td>
+                    <td><?php if($row['status']=='1') { echo 'Active'; } else { echo 'Inactive'; } ?></td>
                     <td><a href="#" class="btn btn-success btn-sm">แก้ไข</a>
                     <a href="#" class="btn btn-danger btn-sm">ลบ</a></td>
                   </tr>

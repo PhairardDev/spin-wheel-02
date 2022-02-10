@@ -16,18 +16,10 @@ class Rewards {
         }
     }
 
-    public function insert($num, $customerUser, $createBy, $endDate, $status) {
-
-            $keyLenght = '10';
-            $str ='124567890ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        
-            for($i=1;$i<=$num;$i++){    
-                $key = substr(str_shuffle($str), 0, $keyLenght);
-                $result = mysqli_query($this->dbcon, "INSERT INTO rewards(couponsCode, customerUsername, createBy, endDate, status) VALUES('$key', '$customerUser', '$createBy', '$endDate', '$status')");
-                
-            }
-            
-            return $result;
+    public function insert($rewardName, $rewardType, $totalPerTime, $totalItems, $createBy, $percentage, $startDate, $endDate, $status) {
+  
+        $result = mysqli_query($this->dbcon, "INSERT INTO rewards(rewardName, rewardType, randomPercent, totalPerTime, totalItems, balanceItems, startDate, endDate, createBy, status) VALUES('$rewardName', '$rewardType', '$percentage', '$totalPerTime', '$totalItems', '$totalItems', '$startDate', '$endDate', '$createBy', '$status')");
+        return $result;
         
     }
 
