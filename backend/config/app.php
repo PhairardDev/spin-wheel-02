@@ -26,10 +26,15 @@ CREATE TABLE coupons (
  CREATE TABLE rewards (
     id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     rewardName VARCHAR(255) NOT NULL,
+    rewardType VARCHAR(255) NOT NULL,
+    randomPercent INT(6),
+    totalItems int(5),
+    balanceItems int(5),
+    startDate DATE,
+    endDate DATE,
     createBy INT(10),
     createDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     updateDate DATETIME NULL,
-    randomPercent INT(6),
     status int(2) NOT NULL
  )
 

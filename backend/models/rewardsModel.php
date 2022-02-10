@@ -1,11 +1,10 @@
 <?php 
-
 define('DB_SERVER', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 define('DB_NAME', 'spindash_db');
 
-class Coupons {
+class Rewards {
 
     function __construct(){
 
@@ -24,7 +23,7 @@ class Coupons {
         
             for($i=1;$i<=$num;$i++){    
                 $key = substr(str_shuffle($str), 0, $keyLenght);
-                $result = mysqli_query($this->dbcon, "INSERT INTO coupons(couponsCode, customerUsername, createBy, endDate, status) VALUES('$key', '$customerUser', '$createBy', '$endDate', '$status')");
+                $result = mysqli_query($this->dbcon, "INSERT INTO rewards(couponsCode, customerUsername, createBy, endDate, status) VALUES('$key', '$customerUser', '$createBy', '$endDate', '$status')");
                 
             }
             
@@ -33,7 +32,7 @@ class Coupons {
     }
 
     public function fetchdata(){
-        $result = mysqli_query($this->dbcon, "SELECT * FROM coupons ORDER BY id DESC");
+        $result = mysqli_query($this->dbcon, "SELECT * FROM rewards ORDER BY id DESC");
         return $result;
     }
 
