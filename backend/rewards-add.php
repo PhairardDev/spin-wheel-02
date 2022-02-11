@@ -12,13 +12,11 @@
       $totalItems = $_POST['totalItems'];
       $createBy = $_SESSION['admin_login'];
       $percentage = $_POST['percentage'];
-      $startDate = date('Y-m-d',$_POST['startDate']);
-      $endDate = date('Y-m-d',$_POST['endDate']);
+      $startDate = date('Y-m-d', strtotime($_POST['startDate']));
+      $endDate = date('Y-m-d', strtotime($_POST['endDate']));
       $status = '1';
-
-      echo $startDate.'-'.$endDate;
       
-      /*$sql = $insertdata->insert($rewardName, $rewardType, $totalPerTime, $totalItems, $createBy, $percentage, $startDate, $endDate, $status);
+      $sql = $insertdata->insert($rewardName, $rewardType, $totalPerTime, $totalItems, $createBy, $percentage, $startDate, $endDate, $status);
 
       if($sql){
           echo "<script>alert('เพิ่มข้อมูลสำเร็จ');</script>";
@@ -26,7 +24,7 @@
       } else {
           echo "<script>alert('มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้ง');</script>";
           echo "<script>window.location.href='rewards-list.php';</script>";
-      }*/
+      }
   }
 
 ?>
@@ -107,7 +105,7 @@
                                 <div class="form-group">
                                 <label>วันเริ่มต้น</label>
                                     <div class="input-group date" id="startDate" data-target-input="nearest">
-                                        <input type="text" name="startDate" id="startDate" class="form-control datetimepicker-input" data-target="#startDate"/>
+                                        <input type="text" name="startDate" class="form-control datetimepicker-input" data-target="#startDate"/>
                                         <div class="input-group-append" data-target="#startDate" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
@@ -118,7 +116,7 @@
                                 <div class="form-group">
                                 <label>วันสิ้นสุด</label>
                                     <div class="input-group date" id="endDate" data-target-input="nearest">
-                                        <input type="text" name="endDate" id="endDate" class="form-control datetimepicker-input" data-target="#endDate"/>
+                                        <input type="text" name="endDate" class="form-control datetimepicker-input" data-target="#endDate"/>
                                         <div class="input-group-append" data-target="#endDate" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
@@ -166,7 +164,7 @@
                         <div class="card-footer">
                           <button type="submit" class="btn btn-primary" name="createReward">Submit</button>
                         </div>
-                        </form>
+                      </form>
                     </div>
 
                     
@@ -229,15 +227,15 @@
     
     //Date picker 01
     $('#startDate').datetimepicker({
-        Format: 'L'
+        format: 'L'
     });
 
     //Date picker 02
     $('#endDate').datetimepicker({
-      Format: 'L'
+      format: 'L'
     });
 
-  }); 
+  })
 </script>
 </body>
 </html>

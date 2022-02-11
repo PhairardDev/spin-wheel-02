@@ -23,6 +23,11 @@ class Rewards {
         
     }
 
+    public function update($rewardName, $rewardType, $totalPerTime, $totalItems, $createBy, $percentage, $startDate, $endDate, $status) {
+        $result = mysqli_query($this->dbcon, "UPDATE rewards SET rewardName='$firstname', rewardType='$lastname', email='$email', phonenumber='$phonenumber', address='$address' WHERE id='$userid' ");
+        return $result;
+    }
+
     public function fetchdata(){
         $result = mysqli_query($this->dbcon, "SELECT * FROM rewards ORDER BY id DESC");
         return $result;
@@ -30,11 +35,6 @@ class Rewards {
 
     /*public function fetchrecords($userid){
         $result = mysqli_query($this->dbcon, "SELECT * FROM tbluser WHERE id='$userid'");
-        return $result;
-    }
-
-    public function update($firstname, $lastname, $email, $phonenumber, $address, $userid) {
-        $result = mysqli_query($this->dbcon, "UPDATE tbluser SET firstname='$firstname', lastname='$lastname', email='$email', phonenumber='$phonenumber', address='$address' WHERE id='$userid' ");
         return $result;
     }
 
