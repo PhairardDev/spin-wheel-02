@@ -83,8 +83,8 @@
                     <td><?php echo $row['balanceItems'] ?></td>
                     <td><?php echo $row['startDate'] .'-'. $row['endDate']  ?></td>
                     <td><?php if($row['status']=='1') { echo 'Active'; } else { echo 'Inactive'; } ?></td>
-                    <td><a href="#" class="btn btn-success btn-sm">แก้ไข</a>
-                    <a href="#" class="btn btn-danger btn-sm">ลบ</a></td>
+                    <td><a href="rewards-edit.php?id=<?=$row['id']?>" class="btn btn-success btn-sm">แก้ไข</a>
+                    <a href="rewards-delete.php?id=<?=$row['id']?>" class="btn btn-danger btn-sm">ลบ</a></td>
                   </tr>
                   <?php } ?>
                   

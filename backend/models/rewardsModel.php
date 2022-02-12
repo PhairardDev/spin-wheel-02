@@ -23,8 +23,9 @@ class Rewards {
         
     }
 
-    public function update($rewardName, $rewardType, $totalPerTime, $totalItems, $createBy, $percentage, $startDate, $endDate, $status) {
-        $result = mysqli_query($this->dbcon, "UPDATE rewards SET rewardName='$firstname', rewardType='$lastname', email='$email', phonenumber='$phonenumber', address='$address' WHERE id='$userid' ");
+    public function update($id, $rewardName, $rewardType, $totalPerTime, $totalItems, $percentage, $startDate, $endDate, $status) {
+        $result = mysqli_query($this->dbcon, "UPDATE rewards SET rewardName='$rewardName', rewardType='$rewardType', totalPerTime='$totalPerTime', totalItems='$totalItems', randomPercent='$percentage', startDate='$startDate', endDate='$endDate', updateDate = '".date('Y-m-d H:i:s')."',status ='$status'  WHERE id='$id' ");
+        echo $result;
         return $result;
     }
 
@@ -33,16 +34,13 @@ class Rewards {
         return $result;
     }
 
-    /*public function fetchrecords($userid){
-        $result = mysqli_query($this->dbcon, "SELECT * FROM tbluser WHERE id='$userid'");
+    public function fetchrecords($rewardId){
+        $result = mysqli_query($this->dbcon, "SELECT * FROM rewards WHERE id='$rewardId'");
         return $result;
     }
 
     public function delete($id) {
-        $result = mysqli_query($this->dbcon, "DELETE FROM tbluser WHERE id ='$id' ");
+        $result = mysqli_query($this->dbcon, "DELETE FROM rewards WHERE id ='$id' ");
         return $result;
-    }*/
-
-
-
+    }
 }

@@ -1,25 +1,31 @@
 <?php 
     include 'header.php';
+    $reward_id = $_GET['id'];
     include_once("models/rewardsModel.php");
 
     $insertdata = new Rewards();
 
-    if(isset($_POST['createReward'])){
+    if(isset($_POST['update'])){
       
       $rewardName = $_POST['rewardName'];
       $rewardType = $_POST['rewardType'];
       $totalPerTime = $_POST['totalPerTime'];
       $totalItems = $_POST['totalItems'];
-      $createBy = $_SESSION['admin_login'];
       $percentage = $_POST['percentage'];
-      $startDate = date('Y-m-d', $_POST['startDate']);
-      $endDate = date('Y-m-d', $_POST['endDate']);
-      $status = '1';
-      
-      $sql = $insertdata->insert($rewardName, $rewardType, $totalPerTime, $totalItems, $createBy, $percentage, $startDate, $endDate, $status);
+      $startDate = date('Y-m-d');
+      $endDate = date('Y-m-d', strtotime('+1 Day'));
+      isset( $_POST['my-checkbox'] ) ? $checker = $_POST['my-checkbox'] : $checker = "";
 
+      if($checker=='on'){
+        $status = '1';
+      } else {
+        $status = '0';
+      }
+      
+      $sql = $insertdata->update($reward_id, $rewardName, $rewardType, $totalPerTime, $totalItems, $percentage, $startDate, $endDate, $status);
+      
       if($sql){
-          echo "<script>alert('เพิ่มข้อมูลสำเร็จ');</script>";
+          echo "<script>alert('อัพเดทข้อมูลสำเร็จ');</script>";
           echo "<script>window.location.href='rewards-list.php';</script>";
       } else {
           echo "<script>alert('มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้ง');</script>";
@@ -33,7 +39,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>เพิ่มของรางวัล - Spin Dashboard</title>
+  <title>แก้ไขของรางวัล - Spin Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -74,7 +80,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1 class="m-0">เพิ่มของรางวัล</h1>
+            <h1 class="m-0">แก้ไขของรางวัล</h1>
           </div><!-- /.col -->
           
         </div><!-- /.row -->
@@ -85,38 +91,52 @@
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
+      <?php
+        
+        $sql = $insertdata->fetchrecords($reward_id);
+        $row = mysqli_fetch_array($sql);
+      
+      ?>
 
                     <div class="card mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">เพิ่มของรางวัล</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">แก้ไข</h6>
                         </div>
                         <div class="card-body">
                           <form action="" method="post" requireed>
+                          
                           <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-lg-8">
                               <div class="form-group">
                                 <label for="rewardName" class="form-label">ชื่อของรางวัล</label>
-                                <input type="text" class="form-control" id="rewardName" name="rewardName" required>
+                                <input type="text" class="form-control" id="rewardName" name="rewardName" value="<?php echo $row['rewardName']?>" required>
+                              </div>
+                            </div>
+                            
+                            <div class="col-lg-4">
+                              <div class="form-group">
+                                <label for="status" class="form-label">Status</label></br>
+                                <input type="checkbox" id="status" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success">
                               </div>
                             </div>
                           </div>
                           <div class="row">
-                          <div class="col-lg-3">
+                          <div class="col-lg-6">
                                 <div class="form-group">
                                 <label>วันเริ่มต้น</label>
                                     <div class="input-group date" id="startDate" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" data-target="#startDate"/>
+                                        <input type="text" value="<?php echo $row['startDate'];?>" name="startDate" class="form-control datetimepicker-input" data-target="#startDate"/>
                                         <div class="input-group-append" data-target="#startDate" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-6">
                                 <div class="form-group">
                                 <label>วันสิ้นสุด</label>
                                     <div class="input-group date" id="endDate" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" data-target="#endDate"/>
+                                        <input type="text" name="endDate" value="<?php echo $row['endDate']?>" class="form-control datetimepicker-input" data-target="#endDate"/>
                                         <div class="input-group-append" data-target="#endDate" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
@@ -126,43 +146,43 @@
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="totalPerTime" class="form-label">จำนวนรางวัล(ต่อครั้ง)</label>
-                                <input type="number" class="form-control" id="totalPerTime" name="totalPerTime" required>
+                                <input type="number" class="form-control" id="totalPerTime" name="totalPerTime" value="<?php echo $row['totalPerTime']?>" required>
                               </div>
                             </div>
                             <div class="col-lg-3">
                               <div class="form-group">
                                 <label for="totalItems" class="form-label">จำนวนรางวัลทั้งหมด</label>
-                                <input type="number" class="form-control" id="totalItems" name="totalItems" required>
+                                <input type="number" class="form-control" id="totalItems" name="totalItems" value="<?php echo $row['totalItems']?>" required>
                               </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-3">
                            
                               <div class="form-group">
                                 <label for="percentage" class="form-label">เปอร์เซนต์การออกรางวัล</label>
                                 <div class="input-group mb-3">    
-                                  <input type="text" name="percentage" id="percentage" class="form-control">
+                                  <input type="text" name="percentage" id="percentage" class="form-control" value="<?php echo $row['randomPercent']?>" required>
                                   <div class="input-group-append">
                                     <span class="input-group-text">%</span>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-3">
                               <div class="form-group">
-                                <label for="rewardTyoe" class="form-label">ประเภทของรางวัล</label>
-                                <select name="rewardTyoe" id="rewardTyoe" class="form-control" required>
+                                <label for="rewardType" class="form-label">ประเภทของรางวัล</label>
+                                <select name="rewardType" id="rewardType" class="form-control" required>
                                   <option value="">Plese Select</option>
-                                  <option value="CREDIT">CREDIT</option>
-                                  <option value="TICKET">TICKET</option>
-                                  <option value="GIFT">GIFT</option>
-                                  <option value="MISS">MISS</option>
+                                  <option value="CREDIT" <?php echo ($row['rewardType']=='CREDIT' ? 'selected' : '' );?>>CREDIT</option>
+                                  <option value="TICKET" <?php echo ($row['rewardType']=='TICKET' ? 'selected' : '' );?>>TICKET</option>
+                                  <option value="GIFT" <?php echo ($row['rewardType']=='GIFT' ? 'selected' : '' );?>>GIFT</option>
+                                  <option value="MISS" <?php echo ($row['rewardType']=='MISS' ? 'selected' : '' );?>>MISS</option>
                                 </select>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="card-footer">
-                          <button type="submit" class="btn btn-primary" name="createReward">Submit</button>
+                          <button type="submit" class="btn btn-primary" name="update">Submit</button>
                         </div>
                         </form>
                     </div>
@@ -234,6 +254,10 @@
     $('#endDate').datetimepicker({
         format: 'L'
     });
+
+    $("input[data-bootstrap-switch]").each(function(){
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    })
 
   }); 
 </script>
