@@ -124,8 +124,9 @@
                           <div class="col-lg-6">
                                 <div class="form-group">
                                 <label>วันเริ่มต้น</label>
+                                    <input type="text" value="<?php echo $row['startDate'];?>" class="form-control datetimepicker-input">
                                     <div class="input-group date" id="startDate" data-target-input="nearest">
-                                        <input type="text" value="<?php echo $row['startDate'];?>" name="startDate" class="form-control datetimepicker-input" data-target="#startDate"/>
+                                        <input type="text" value="<?php echo $row['startDate'];?>" name="startDate" class="form-control datetimepicker-input" value="<?php echo $row['startDate'];?>"/>
                                         <div class="input-group-append" data-target="#startDate" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
