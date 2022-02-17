@@ -25,7 +25,6 @@ class Rewards {
 
     public function update($id, $rewardName, $rewardType, $totalPerTime, $totalItems, $percentage, $startDate, $endDate, $status) {
         $result = mysqli_query($this->dbcon, "UPDATE rewards SET rewardName='$rewardName', rewardType='$rewardType', totalPerTime='$totalPerTime', totalItems='$totalItems', randomPercent='$percentage', startDate='$startDate', endDate='$endDate', updateDate = '".date('Y-m-d H:i:s')."',status ='$status'  WHERE id='$id' ");
-        echo $result;
         return $result;
     }
 
