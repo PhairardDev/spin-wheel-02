@@ -16,10 +16,9 @@ if($_SERVER['REQUEST_METHOD']=='GET'){
     $result->execute(array(':redeem'=>$_POST['str_redeem']));*/
 
     if(isset($coupons)) {
-        echo $coupons;
+        return $coupons;
     }
     else {
-        echo '300';
         return http_response_code(300);
     }
 

@@ -551,6 +551,7 @@
 
 		var code_id = "";
 
+
 		if (code_id == "") {
 			modal.style.display = "block";
 		}
@@ -559,7 +560,7 @@
 
 			var str_redeem = document.getElementById("str_code_name").value;
 
-			//console.log(str_redeem);
+			console.log(str_redeem);
 
 			if (str_redeem == "") {
 				swal('Message', 'กรุณากรอก Code เพื่อหมุนวงล้อ', 'error');
@@ -567,7 +568,7 @@
 
 				$.ajax({
 					type: "POST",
-					url: 'api/api_coupon_check.php',
+					url: 'api/api_coupon_checked.php',
 					data: "str_redeem=" + str_redeem,
 					success: function(data) {
 
@@ -708,6 +709,7 @@
 		}
 
 		function click_spin() {
+			
 			console.log('click spin');
 
 			setTimeout(function() {
