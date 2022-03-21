@@ -1,29 +1,17 @@
-
-<!-- Tempusdominus Bbootstrap 4 -->
-<link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-<link rel="shortcut icon" href="https://www.ez4spinn.com/images/sbospin.png" type="image/x-icon">
-<!-- ADD Font google -->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
-
-
-<!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
-
-<!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- sweetalert -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1" /> -->
 	<meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=0.75, maximum-scale=0.75, user-scalable=no" />
 	<title>LuckyWheel</title>
+	<!-- Tempusdominus Bbootstrap 4 -->
+	<link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+	<link rel="shortcut icon" href="https://www.ez4spinn.com/images/sbospin.png" type="image/x-icon">
+	<!-- ADD Font google -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300&display=swap');
 
@@ -44,9 +32,6 @@
 				height: 100vh;
 				overflow: hidden;
 				background-image: linear-gradient(to right, #040406, #920505, #040406);
-				/*background: url("images/hpny2021-2.jpg");
-				background-size: cover;
-				background-position: bottom;*/
 			}
 		}
 
@@ -58,9 +43,7 @@
 				align-items: center;
 				height: 100vh;
 				overflow: hidden;
-				background: url("images/hpny2021.jpg");
-				background-size: cover;
-				background-position: bottom;
+				background-image: linear-gradient(to right, #040406, #920505, #040406);
 			}
 		}
 		
@@ -148,6 +131,10 @@
 		.bg_polygon_2 {
 			background: linear-gradient(90deg, rgb(255, 255, 255) 21%, rgb(199, 199, 199) 48%, rgb(255, 255, 255) 68%);
 			color: black;
+		}
+
+		#rule {
+				cursor: pointer;
 		}
 
 		/*Little bit adjust the value*/
@@ -467,30 +454,14 @@
 
 <body>
 	
-
-
 	<div id="mainbox" class="mainbox">
 		<div class="box_bg"></div>
 		<div id="box" class="box">
-			<div class="box1">
-				<!-- 90 -->
-				<span class="span1 bg_polygon"><b>เครดิต 50</b></span>
-				<!-- 270 -->
-				<span class="span2 bg_polygon"><b>เครดิต 500</b></span>
-				<!-- 180 -->
-				<span class="span3 bg_polygon"><b>เครดิต 100</b></span>
-				<!-- 360 -->
-				<span class="span4 bg_polygon"><b>เครดิต 10</b></span>
+			<div id="box1" class="box1">
+				
 			</div>
-			<div class="box2">
-				<!-- 225 -->
-				<span class="span1 bg_polygon_2"><b>ได้หมุนใหม่ 1 ครั้ง</b></span>
-				<!-- 45 -->
-				<span class="span2 bg_polygon_2"><b>เกือบได้แล้วค่ะพี่</b></span>
-				<!-- 315 -->
-				<span class="span3 bg_polygon_2"><b>ไม่ได้รางวัล</b></span>
-				<!-- 135 -->
-				<span class="span4 bg_polygon_2"><b>เครดิต 1000</b></span>
+			<div id="box2" class="box2">
+
 			</div>
 		</div>
 
@@ -498,8 +469,8 @@
 	</div>
 
 
-	<!-- <image id="h_rule" class="d-none rule" src="https://www.ez4spinn.com/images/กติกา.png"></image> -->
-	<!-- <image id="rule" style="z-index: 100;position: fixed;right: 10vh;bottom: 10vh;width:150px;height:100px;" src="https://www.ez4spinn.com/images/กติกา.png"></image> -->
+	<image id="h_rule" class="d-none rule" src="https://www.ez4spinn.com/images/กติกา.png"></image>
+	<image id="rule" style="z-index: 100;position: fixed;right: 10vh;bottom: 10vh;width:150px;height:100px;" src="https://www.ez4spinn.com/images/กติกา.png"></image>
 
 
 	<!-- Trigger/Open The Modal -->
@@ -521,9 +492,39 @@
 
 	</div>
 
+	<!-- jQuery -->
+	<script src="plugins/jquery/jquery.min.js"></script>
 
+	<!-- Bootstrap 4 -->
+	<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- sweetalert -->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 	<script>
+
+		let rewards = ["เครดิต 50", "เครดิต 500", "เครดิต 100", "เครดิต 10", "ได้หมุนใหม่ 1 ครั้ง", "เกือบได้แล้วค่ะพี่", "ไม่ได้รางวัล", "เครดิต 1000"]
+		let item = ""
+		let item2 = ""
+		rewards.forEach(displayItems)
+
+		document.getElementById("box1").innerHTML = item
+		document.getElementById("box2").innerHTML = item2
+
+		function displayItems(rewaedItem,index){
+
+			index = index+1
+			
+			if(index >= 5){
+				index=index-4
+				item2 += '<span class="span'+index+' bg_polygon_2"><b>' +rewaedItem+ '</b></span>'
+			} else {
+				item += '<span class="span'+index+' bg_polygon"><b>' +rewaedItem+ '</b></span>'
+			}
+
+		}
+
+
 		$("#rule").click(function() {
 			$("#h_rule").removeClass("d-none");
 			$("#h_rule").addClass("d-block");
@@ -560,7 +561,7 @@
 
 			var str_redeem = document.getElementById("str_code_name").value;
 
-			console.log(str_redeem);
+			//console.log(str_redeem);
 
 			if (str_redeem == "") {
 				swal('Message', 'กรุณากรอก Code เพื่อหมุนวงล้อ', 'error');
