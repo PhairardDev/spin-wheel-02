@@ -2,7 +2,7 @@
   session_start();
   require_once 'config/db.php';
   if(!isset($_SESSION['admin_login'])){
-      $_SESSION['error'] = 'กรุณาเข้าสู่ระบบ';
+      /*$_SESSION['error'] = 'กรุณาเข้าสู่ระบบ';*/
       header("location:signin.php");
   } else {
     $userId = $_SESSION['admin_login'];

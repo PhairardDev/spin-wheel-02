@@ -102,7 +102,8 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary" name="signup">Add User</button>
+                  <button type="submit" class="btn btn-primary mr-2" name="signup">Add User</button>
+                  <a href="user-list.php" class="btn btn-secondary">Cancel</a>
                 </div>
               </form>
             </div>

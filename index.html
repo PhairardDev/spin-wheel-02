@@ -470,7 +470,7 @@
 
 
 	<image id="h_rule" class="d-none rule" src="https://www.ez4spinn.com/images/กติกา.png"></image>
-	<image id="rule" style="z-index: 100;position: fixed;right: 10vh;bottom: 10vh;width:150px;height:100px;" src="https://www.ez4spinn.com/images/กติกา.png"></image>
+	<span id="rule" style="color:#fff;z-index: 100;position: fixed;right: 10vh;bottom: 10vh;width:150px;height:100px;">ข้อตกลงและเงื่อนไข</span>
 
 
 	<!-- Trigger/Open The Modal -->
@@ -578,9 +578,7 @@
 							modal.style.display = "none";
 
 							$('#code_ck').val(data);
-
 							$('#code_up').val(str_redeem);
-
 							$('#btn_spin').prop('disabled', false);
 
 						} else if (data == 400) {
@@ -630,7 +628,7 @@
 
 			//var degree = "";
 
-			//console.log(degree);
+			console.log(degree);
 
 			$('#btn_spin').prop('disabled', true);
 
@@ -695,7 +693,7 @@
 
 			let degree = document.getElementById("code_ck").value;
 
-			console.log('wheel');
+			console.log(degree);
 
 			// Enable button when spin is over
 			startButton.style.pointerEvents = 'none';
@@ -746,7 +744,7 @@
 					url: 'api/api_coupon_use.php',
 					data: "str_redeem=" + str_redeem,
 					success: function(data) {
-						//console.log(data);
+						console.log(data);
 						swal('รางวัลที่ได้', data, 'success');
 					}
 				});

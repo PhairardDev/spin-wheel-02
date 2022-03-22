@@ -183,7 +183,8 @@
                           </div>
                         </div>
                         <div class="card-footer">
-                          <button type="submit" class="btn btn-primary" name="update">Submit</button>
+                          <button type="submit" class="btn btn-primary mr-2" name="update">Submit</button>
+                          <a href="rewards-list.php" class="btn btn-secondary">Cancel</a>
                         </div>
                         </form>
                     </div>
