@@ -12,8 +12,8 @@
       $totalPerTime = $_POST['totalPerTime'];
       $totalItems = $_POST['totalItems'];
       $percentage = $_POST['percentage'];
-      $startDate = date('Y-m-d');
-      $endDate = date('Y-m-d', strtotime('+1 Day'));
+      $startDate = date('Y-m-d', strtotime($_POST['startDate']));
+      $endDate = date('Y-m-d', strtotime($_POST['endDate']));
       isset( $_POST['my-checkbox'] ) ? $checker = $_POST['my-checkbox'] : $checker = "";
 
       if($checker=='on'){
@@ -100,7 +100,7 @@
 
                     <div class="card mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">แก้ไข</h6>
+                            <h6 class="m-0 font-weight-bold text-info">แก้ไข</h6>
                         </div>
                         <div class="card-body">
                           <form action="" method="post" requireed>
@@ -124,9 +124,8 @@
                           <div class="col-lg-6">
                                 <div class="form-group">
                                 <label>วันเริ่มต้น</label>
-                                    <input type="text" value="<?php echo $row['startDate'];?>" class="form-control datetimepicker-input">
                                     <div class="input-group date" id="startDate" data-target-input="nearest">
-                                        <input type="text" value="<?php echo $row['startDate'];?>" name="startDate" class="form-control datetimepicker-input" value="<?php echo $row['startDate'];?>"/>
+                                        <input type="text" name="startDate" class="form-control datetimepicker-input" data-target="#startDate" value="<?php echo date('m/d/Y', strtotime($row['startDate']));?>"/>
                                         <div class="input-group-append" data-target="#startDate" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>
@@ -137,7 +136,7 @@
                                 <div class="form-group">
                                 <label>วันสิ้นสุด</label>
                                     <div class="input-group date" id="endDate" data-target-input="nearest">
-                                        <input type="text" name="endDate" value="<?php echo $row['endDate']?>" class="form-control datetimepicker-input" data-target="#endDate"/>
+                                        <input type="text" name="endDate" class="form-control datetimepicker-input" data-target="#endDate"  value="<?php echo date('m/d/Y', strtotime($row['endDate']));?>"/>
                                         <div class="input-group-append" data-target="#endDate" data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                                         </div>

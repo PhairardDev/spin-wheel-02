@@ -35,7 +35,7 @@
         <div class="row mb-2">
           <div class="col-sm-12">
             <h1 class="m-0">ของรางวัลทั้งหมด</h1>
-            <a href="rewards-add.php" class="btn btn-primary"><i class="fa fa-plus"></i> เพิ่มของรางวัลใหม่</a>
+            <a href="rewards-add.php" class="btn btn-primary mt-2"><i class="fa fa-plus"></i> เพิ่มของรางวัลใหม่</a>
           </div><!-- /.col -->
           
         </div><!-- /.row -->
@@ -50,19 +50,15 @@
           <div class="col-lg-12">
 
             <div class="card">
-              <div class="card-header border-0">
-              </div>
               <div class="card-body table-responsive p-0">
                 <table class="table table-striped table-valign-middle">
                   <thead>
-                  <tr>
+                  <tr class="table-info">
                     <th>#</th>
                     <th>ชื่อของรางวัล</th>
-                    <th>เปอร์เซ็นต์การได้รางวัล</th>
+                    <th>% การได้รางวัล</th>
                     <th>ประเภทรางวัล</th>
-                    <th>จำนวนรางวัลที่จะได้</th>
-                    <th>รับได้สูงสุด/ครั้ง</th>
-                    <th>จำนวนคงเหลือ/ครั้ง</th>
+                    <th>จำนวนคงเหลือทั้งหมด</th>
                     <th>ระยะเวลาของรางวัล</th>
                     <th>สถานะ</th>
                     <th>จัดการ</th>
@@ -77,12 +73,10 @@
                   <tr>
                     <td><?php echo $i++; ?></td>
                     <td><?php echo $row['rewardName'] ?></td>
-                    <td><?php echo $row['randomPercent'] ?></td>
+                    <td><?php echo $row['randomPercent'] ?> %</td>
                     <td><?php echo $row['rewardType'] ?></td>
-                    <td><?php echo $row['totalPerTime'] ?></td>
-                    <td><?php echo $row['totalItems'] ?></td>
                     <td><?php echo $row['balanceItems'] ?></td>
-                    <td><?php echo $row['startDate'] .'-'. $row['endDate']  ?></td>
+                    <td><?php echo $row['startDate'] .' to '. $row['endDate']  ?></td>
                     <td><?php if($row['status']=='1') { echo 'Active'; } else { echo 'Inactive'; } ?></td>
                     <td><a href="rewards-edit.php?id=<?=$row['id']?>" class="btn btn-success btn-sm">แก้ไข</a>
                     <a href="rewards-delete.php?id=<?=$row['id']?>" class="btn btn-danger btn-sm">ลบ</a></td>

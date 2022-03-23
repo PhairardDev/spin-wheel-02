@@ -47,12 +47,10 @@
           <div class="col-lg-12">
 
             <div class="card">
-              <div class="card-header border-0">
-              </div>
               <div class="card-body table-responsive p-0">
                 <table class="table table-striped table-valign-middle">
                   <thead>
-                  <tr>
+                  <tr class="table-info">
                     <th>#</th>
                     <th>ชื่อผู้ใช้</th>
                     <th>ชื่อ</th>
@@ -89,7 +87,7 @@ foreach($queryUser as $row){
                     if(isset($whenAccess['loginDate'])) { echo $whenAccess['loginDate']; } else { echo 'Never';} ?>
                     </td>
                     <td><?php if($row['status']=='1') { echo 'ปกติ'; } else { echo 'ระงับการใช้งาน'; } ?></td>
-                    <td></td>
+                    <td><a href="#" class="btn btn-success">แก้ไข</a></td>
                   </tr>
                   <?php } ?>
                   

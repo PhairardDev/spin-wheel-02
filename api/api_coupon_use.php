@@ -2,7 +2,7 @@
 if(isset($_POST['str_redeem'])){ 
     
     $redeem = $_POST['str_redeem'];
-    $rewards = "เครดิต 50";
+    $rewards = "เกือบได้แล้วค่ะพี่";
     echo $rewards;
     return $rewards;
 } 

@@ -73,7 +73,7 @@
       </form>
 
       <p class="my-2">
-        <a href="forgot-password.html">ลืมรหัสผ่าน</a>
+        <a href="forgot-password.php">ลืมรหัสผ่าน</a>
       </p>
     </div>
     <!-- /.card-body -->

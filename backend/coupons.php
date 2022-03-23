@@ -38,6 +38,10 @@
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- IonIcons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
@@ -71,7 +75,7 @@
         <!-- DataTales Example -->
         <div class="card mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">สร้างโค้ดใหม่</h6>
+                            <h6 class="m-0 font-weight-bold text-info">สร้างโค้ดใหม่</h6>
                         </div>
                         <div class="card-body">
                           <form action="" method="post" requireed>
@@ -99,22 +103,19 @@
 
                
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">รายการโค้ดทั้งหมด</h6>
-                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered table-hover" id="dataTable">
                                     <thead>
-                                        <tr>
+                                        <tr class="table-success">
                                             <th>#</th>
-                                            <th>Code</th>
-                                            <th>Username</th>
-                                            <th>Created Date</th>
-                                            <th>Used Date</th>
-                                            <th>Expire Date</th>
-                                            <th>Status</th>
-                                            <th>Rewards</th>
+                                            <th>โค้ด</th>
+                                            <th>ชื่อผู้ใช้</th>
+                                            <th>ถูกสร้างเมื่อ</th>
+                                            <th>ใช้งานเมื่อ</th>
+                                            <th>วันหมดอายุ</th>
+                                            <th>สถานะโค้ด</th>
+                                            <th>รางวัลที่ได้</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -174,11 +175,39 @@
 <!-- AdminLTE -->
 <script src="dist/js/adminlte.js"></script>
 
+<!-- DataTables  & Plugins -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="plugins/jszip/jszip.min.js"></script>
+<script src="plugins/pdfmake/pdfmake.min.js"></script>
+<script src="plugins/pdfmake/vfs_fonts.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
 <!-- OPTIONAL SCRIPTS -->
 <script src="plugins/chart.js/Chart.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard3.js"></script>
+
+<script>
+  $(function () {
+    $('#dataTable').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": false,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>
