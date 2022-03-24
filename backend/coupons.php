@@ -74,29 +74,30 @@
 
         <!-- DataTales Example -->
         <div class="card mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-info">สร้างโค้ดใหม่</h6>
+                        <div class="card-header py-3 bg-primary">
+                            <h6 class="m-0 ">สร้างโค้ดใหม่</h6>
                         </div>
                         <div class="card-body">
                           <form action="" method="post" requireed>
                           <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-2">
                               <div class="form-group">
                                 <label for="numberOfCode" class="form-label">ใส่จำนวนโค้ดที่ต้องการสร้าง</label>
                                 <input type="number" class="form-control" id="numberOfCode" name="numberOfCode" aria-describedby="Number Of Code" required>
-                                <span class="info">กรอกตัวเลขเท่านั้น</span>
+                                <span class="info">กรอกตัวเลข เช่น 1-10 เท่านั้น</span>
                               </div>
                             </div>
                             <div class="col-sm-6 col-lg-4">
                               <div class="form-group">
-                                <label for="customerUser" class="form-label">Username ของลูกค้า</label>
+                                <label for="customerUser" class="form-label">Username ลูกค้า</label>
                                 <input type="text" class="form-control" id="customerUser" name="customerUser" aria-describedby="Customer User" required>
+                                <span class="info">Username ของลูกค้าที่ต้องการแจกโค้ด</span>
                               </div>
                             </div>
                           </div>
                         </div>
                         <div class="card-footer">
-                          <button type="submit" class="btn btn-primary" name="createCode">สร้างโค้ด</button>
+                          <button type="submit" class="btn btn-lg btn-primary" name="createCode">สร้างโค้ด</button>
                         </div>
                         </form>
         </div>
@@ -107,7 +108,7 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover" id="dataTable">
                                     <thead>
-                                        <tr class="table-success">
+                                        <tr class="table-info">
                                             <th>#</th>
                                             <th>โค้ด</th>
                                             <th>ชื่อผู้ใช้</th>

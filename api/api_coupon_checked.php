@@ -1,12 +1,12 @@
 <?php 
-/*if(isset($_POST['str_redeem'])){ 
+if(isset($_POST['str_redeem'])){ 
     
     $redeem = $_POST['str_redeem'];
     $code_ck = "80DYPAO9Y9";
 
     if($redeem == $code_ck){
         
-        $rewards = "135";
+        $rewards = "180";
         echo $rewards;
         return $rewards;
     }
@@ -20,9 +20,9 @@
 else {
     echo "300";
     return 300;
-}*/
+}
 
-$fruits = array('apple' => '5', 'orange' => '90', 'pear' => '5');
+/*$fruits = array('apple' => '5', 'orange' => '90', 'pear' => '5');
 
 $newFruits = array();
 foreach ($fruits as $fruit=>$value)
@@ -44,4 +44,4 @@ function getRandomWeightedElement(array $weightedValues) {
         return $key;
       }
     }
-  }
+  }*/

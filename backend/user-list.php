@@ -33,6 +33,7 @@
         <div class="row mb-2">
           <div class="col-sm-12">
             <h1 class="m-0">ผู้ใช้ทั้งหมด</h1>
+            <a href="user-add.php" class="btn btn-outline-primary mt-2"><i class="fa fa-plus"></i> เพิ่มผู้ใช้ใหม่</a></a>
           </div><!-- /.col -->
           
         </div><!-- /.row -->

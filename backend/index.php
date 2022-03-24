@@ -39,7 +39,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1 class="m-0">สรุปรวม</h1>
+            <h1 class="m-0">ภาพรวม</h1>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -51,8 +51,8 @@
       <div class="container-fluid">
           
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">รายการโค้ดทั้งหมด</h6>
+                        <div class="card-header py-3 bg-primary">
+                            <h6 class="m-0">รายการโค้ดทั้งหมด</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

@@ -35,7 +35,7 @@
         <div class="row mb-2">
           <div class="col-sm-12">
             <h1 class="m-0">ของรางวัลทั้งหมด</h1>
-            <a href="rewards-add.php" class="btn btn-primary mt-2"><i class="fa fa-plus"></i> เพิ่มของรางวัลใหม่</a>
+            <a href="rewards-add.php" class="btn btn-outline-primary mt-2"><i class="fa fa-plus"></i> เพิ่มของรางวัลใหม่</a>
           </div><!-- /.col -->
           
         </div><!-- /.row -->

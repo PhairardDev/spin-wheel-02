@@ -87,8 +87,8 @@
       <div class="container-fluid">
 
                     <div class="card mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-info">เพิ่มของรางวัล</h6>
+                        <div class="card-header py-3 bg-primary">
+                            <h6 class="m-0">เพิ่มของรางวัล</h6>
                         </div>
                         <div class="card-body">
                           <form action="" method="post" requireed>
@@ -162,8 +162,8 @@
                           </div>
                         </div>
                         <div class="card-footer">
-                          <button type="submit" class="btn btn-primary mr-2" name="createReward">Submit</button>
-                          <a href="rewards-list.php" class="btn btn-secondary">Cancel</a>
+                          <button type="submit" class="btn btn-lg btn-primary mr-2" name="createReward">Add</button>
+                          <a href="rewards-list.php">Cancel</a>
                         </div>
                       </form>
                     </div>
