@@ -6,7 +6,7 @@ if(isset($_POST['str_redeem'])){
 
     if($redeem == $code_ck){
         
-        $rewards = "180";
+        $rewards = "135";
         echo $rewards;
         return $rewards;
     }
