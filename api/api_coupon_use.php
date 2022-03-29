@@ -1,33 +1,43 @@
 <?php
+require_once('database.php');
+$db = new Database('localhost','spindash_db','root','');
+
 if(isset($_POST['str_redeem'])){ 
-    
-    $deegreeList = [90, 270, 180, 360, 225, 45, 315, 135];
 
-    $redeem = $_POST['str_redeem'];
-    $deegree = $_POST['deegree'];
+$deegreeList = [90, 270, 180, 360, 225, 45, 315, 135];
 
-    if($deegree==135){
+$redeem = $_POST['str_redeem'];
+$degree = $_POST['code_ck'];
+
+$current = date("Y-m-d H:i:s");
+
+$queryUsed = $db->update("UPDATE coupons SET status =?, used =? WHERE couponsCode =?", array(2,$current,$redeem));
+
+    if($degree==135){
         $rewards = "เครดิต 10";
-    } else if($deegree==315){
+    } else if($degree==315){
         $rewards = "เครดิต 500";
-    } else if($deegree==45){
+    } else if($degree==45){
         $rewards = "เครดิต 50";
-    } else if($deegree==225){
+    } else if($degree==225){
         $rewards = "เครดิต 100";
-    } else if($deegree==360){
+    } else if($degree==360){
         $rewards = "เครดิต 1000";
-    } else if($deegree==180){
+    } else if($degree==180){
         $rewards = "ได้หมุนใหม่";
-    } else if($deegree==270){
+    } else if($degree==270){
         $rewards = "เกือบได้แล้วค่ะพี่";
-    } else if($deegree==90){
+    } else if($degree==90){
         $rewards = "ไม่ได้อะไรนะคะ";
     }
-    
+
+ $queryBalance = $db->update("UPDATE rewards SET balanceItems =? WHERE rewardName =?", array(9,$rewards));
+
+ $sqlResult = $db->insert("INSERT results(couponsCode, rewardId, updateDate, status) VALUE('".$redeem."','8','".$current."','1')", array($redeem,8,$current,1));
+ 
+
     echo $rewards;
-    return $rewards;
 } 
 else {
     echo "300";
-    return 300;
 }

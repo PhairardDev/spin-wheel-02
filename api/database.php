@@ -18,4 +18,15 @@ class Database {
             return $data;
         }
     }
+
+    public function insert($insert, $value){
+        $stmt = $this->pdo->prepare($insert);
+        $stmt->execute($value);
+    }
+
+    public function update($update,$value){
+        $stmt = $this->pdo->prepare($update);
+        $stmt->execute($value);
+    }
+
 }
