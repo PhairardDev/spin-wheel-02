@@ -758,13 +758,13 @@
 				$.ajax({
 					type: "POST",
 					url: 'api/api_coupon_use.php',
-					data: "str_redeem=" + str_redeem + "&deegree=" + document.getElementById("code_ck").value,
+					data: "str_redeem=" + str_redeem + "&code_ck=" + document.getElementById("code_ck").value,
 					success: function(data) {
 						//console.log(data);
 						swal('รางวัลที่ได้', data, 'success');
-						if(data == 'ได้หมุนใหม่'){
+						/*if(data == 'ได้หมุนใหม่'){
 							startButton.style.pointerEvents = 'visible';
-						}
+						}*/
 					}
 				});
 
