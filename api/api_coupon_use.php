@@ -11,7 +11,7 @@ $degree = $_POST['code_ck'];
 
 $current = date("Y-m-d H:i:s");
 
-$queryUsed = $db->update("UPDATE coupons SET status =?, used =? WHERE couponsCode =?", array(2,$current,$redeem));
+$queryUsed = $db->update("UPDATE coupons SET status =?, used =? WHERE couponsCode =?", array(0,$current,$redeem));
 
     if($degree==135){
         $rewards = "เครดิต 10";
@@ -31,10 +31,12 @@ $queryUsed = $db->update("UPDATE coupons SET status =?, used =? WHERE couponsCod
         $rewards = "ไม่ได้อะไรนะคะ";
     }
 
- $queryBalance = $db->update("UPDATE rewards SET balanceItems =? WHERE rewardName =?", array(9,$rewards));
+    $updateBalance = $db->update("UPDATE rewards SET balanceItems = balanceItems-1 WHERE rewardName =?", array($rewards));
 
- $sqlResult = $db->insert("INSERT results(couponsCode, rewardId, updateDate, status) VALUE('".$redeem."','8','".$current."','1')", array($redeem,8,$current,1));
- 
+    $queryRewardId = $db->query("SELECT id FROM rewards WHERE rewardName ='".$rewards."'");
+    $rewardId = $queryRewardId[0]['id'];
+
+    $sqlResult = $db->insert("INSERT results(couponsCode, rewardId, updateDate, status) VALUE(?,?,?,?)", array($redeem,$rewardId,$current,1));
 
     echo $rewards;
 } 
