@@ -1,7 +1,7 @@
 <?php 
     include 'header.php';
     require("models/rewardsModel.php");
-    $query = new Rewards();
+    $insertdata = new Rewards();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,10 +66,10 @@
                   </thead>
                   <tbody>
                   <?php
-                      $sql = $query->fetchdata();
-                      $i = 1;
-                      while($row = mysqli_fetch_array($sql)){ 
-                  ?>  
+                                        $sql = $insertdata->fetchdata();
+                                        $i = 1;
+                                        while($row = mysqli_fetch_array($sql)){ 
+                                    ?>  
                   <tr>
                     <td><?php echo $i++; ?></td>
                     <td><?php echo $row['rewardName'] ?></td>

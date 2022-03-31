@@ -2,7 +2,7 @@
     include 'header.php';
     include_once("models/couponsModel.php");
 
-    $dbQuery = new Coupons();
+    $insertdata = new Coupons();
 
     if(isset($_POST['createCode'])){
       
@@ -13,7 +13,7 @@
       $endDate = date('Y-m-d', strtotime("+1 day"));
       $status = '1';
       
-      $sql = $dbQuery->insert($num, $customerUser, $createBy, $endDate, $status);
+      $sql = $insertdata->insert($num, $customerUser, $createBy, $endDate, $status);
 
       if($sql){
           echo "<script>alert('สร้างโค้ดสำเร็จ');</script>";
@@ -121,7 +121,7 @@
                                     </thead>
                                     <tbody>
                                     <?php
-                                        $sql = $dbQuery->fetchdata();
+                                        $sql = $insertdata->fetchdata();
                                         $i = 1;
                                         while($row = mysqli_fetch_array($sql)){ 
                                     ?>
@@ -135,13 +135,7 @@
                                             <td><?php if($row['status']=='1'){echo 'ยังไม่ได้ใช้งาน';}
                                             else if($row['status']=='0'){ echo 'ใช้งานแล้ว'; }
                                             else{echo 'โค้ดหมดอายุ';}?></td>
-                                            <td><?php 
-
-                                            $sql2 = $dbQuery->fetchrecord($row['couponsCode']);
-                                            $reward = mysqli_fetch_assoc($sql2);
-                                            echo $reward['rewardName'];
- 
-                                            ?></td>
+                                            <td><?php echo $row['status'];?></td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>

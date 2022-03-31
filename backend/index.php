@@ -85,13 +85,7 @@
                                             <td><?php if($row['status']=='1'){echo 'ยังไม่ได้ใช้งาน';}
                                             else if($row['status']=='0'){ echo 'ใช้งานแล้ว'; }
                                             else{echo 'โค้ดหมดอายุ';}?></td>
-                                            <td><?php 
-
-                                            $sql2 = $query->fetchrecord($row['couponsCode']);
-                                            $reward = mysqli_fetch_assoc($sql2);
-                                            echo $reward['rewardName'];
-
-                                            ?></td>
+                                            <td><?php echo $row['status'];?></td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
