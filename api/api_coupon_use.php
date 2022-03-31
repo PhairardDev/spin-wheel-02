@@ -9,36 +9,43 @@ $deegreeList = [90, 270, 180, 360, 225, 45, 315, 135];
 $redeem = $_POST['str_redeem'];
 $degree = $_POST['code_ck'];
 $current = date("Y-m-d H:i:s");
-$rewards = "";
-
-$queryUsed = $db->update("UPDATE coupons SET status =?, used =? WHERE couponsCode =?", array(0,$current,$redeem));
 
     if($degree==135){
-        $rewards = "เครดิต 10";
+        $order = 1;
     } else if($degree==315){
-        $rewards = "เครดิต 500";
+        $order = 2;
     } else if($degree==45){
-        $rewards = "เครดิต 50";
+        $order = 3;
     } else if($degree==225){
-        $rewards = "เครดิต 100";
+        $order = 4;
     } else if($degree==360){
-        $rewards = "เครดิต 1000";
+        $order = 5;
     } else if($degree==180){
-        $rewards = "ได้หมุนใหม่ 1 ครั้ง";
+        $order = 6;
     } else if($degree==270){
-        $rewards = "เกือบได้แล้วค่ะพี่";
-    } else {
-        $rewards = "ไม่ได้อะไรนะคะ";
+        $order = 7;
+    } else if($degree==90){
+        $order = 8;
     }
 
-    $updateBalance = $db->update("UPDATE rewards SET balanceItems = balanceItems-1 WHERE rewardName =?", array($rewards));
-
-    $queryRewardId = $db->query("SELECT id FROM rewards WHERE rewardName ='".$rewards."'");
+    $updateBalance = $db->update("UPDATE rewards SET balanceItems = balanceItems-1 WHERE displayOrder =?", array($order));
+    $queryRewardId = $db->query("SELECT id,rewardName FROM rewards WHERE displayOrder ='".$order."'");
+    
     $rewardId = $queryRewardId[0]['id'];
+    $rewardName = $queryRewardId[0]['rewardName'];
 
-    $sqlResult = $db->insert("INSERT results(couponsCode, rewardId, updateDate, status) VALUE(?,?,?,?)", array($redeem,$rewardId,$current,1));
+    if($rewardName != "ได้หมุนใหม่ 1 ครั้ง"){
 
-    echo $rewards;
+        $queryUsed = $db->update("UPDATE coupons SET status =?, used =? WHERE couponsCode =?", array(0,$current,$redeem));
+        $sqlResult = $db->insert("INSERT results(couponsCode, rewardId, updateDate, status) VALUE(?,?,?,?)", array($redeem,$rewardId,$current,1));
+
+        echo $rewardName;
+    }
+    else {
+        echo $rewardName;
+    }
+
+    
 } 
 else {
     echo "300";

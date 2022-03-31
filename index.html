@@ -533,13 +533,16 @@
 					} else {
 						document.getElementById("box1").innerHTML += '<span class="span'+index+' bg_polygon"><b>' +response[i].name+ '</b></span>'
 					}
-					
-					//console.log(response[i].name)
-					//console.log(i+1)
+
 				}
 			}
 		})
 
+		$('input').blur(function () {                     
+                $(this).val(
+                    $.trim($(this).val())
+                );
+    	});
 
 		$("#rule").click(function() {
 			$("#h_rule").removeClass("d-none");
@@ -581,7 +584,8 @@
 
 			if (str_redeem == "") {
 				swal('Message', 'กรุณากรอก Code เพื่อหมุนวงล้อ', 'error');
-			} else {
+			} 
+			else {
 
 				$.ajax({
 					type: "POST",
@@ -713,14 +717,17 @@
 					data: "str_redeem=" + str_redeem + "&code_ck=" + document.getElementById("code_ck").value,
 					success: function(data) {
 						//console.log(data);
-						swal('รางวัลที่ได้', data, 'success');
+						swal('รางวัลที่ได้', data, 'success')
 
-						document.getElementById("btn_spin").style.display = "none";
-						document.getElementById("btn-reset").style.display = "block";
-						
-						/*if(data == 'ได้หมุนใหม่'){
-							startButton.style.pointerEvents = 'visible';
-						}*/
+						if(data == 'ได้หมุนใหม่ 1 ครั้ง'){
+							$('#code_ck').reset();
+							$('#code_up').reset();
+							window.location.reload()
+						}
+						else {
+							document.getElementById("btn_spin").style.display = "none"
+							document.getElementById("btn-reset").style.display = "block"
+						}
 					}
 				});
 
