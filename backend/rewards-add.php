@@ -2,7 +2,7 @@
     include 'header.php';
     include_once("models/rewardsModel.php");
 
-    $insertdata = new Rewards();
+    $query = new Rewards();
 
     if(isset($_POST['createReward'])){
       
@@ -15,16 +15,28 @@
       $startDate = date('Y-m-d', strtotime($_POST['startDate']));
       $endDate = date('Y-m-d', strtotime($_POST['endDate']));
       $status = '1';
-      
-      $sql = $insertdata->insert($rewardName, $rewardType, $totalPerTime, $totalItems, $createBy, $percentage, $startDate, $endDate, $status);
 
-      if($sql){
+      $result = $query->countRewards();
+      $items = mysqli_fetch_assoc($result);
+      $countItems = $items['count'];
+      
+      if($countItems != 8){
+        
+        $sql = $query->insert($rewardName, $rewardType, $totalPerTime, $totalItems, $createBy, $percentage, $startDate, $endDate, $status, $order);
+        
+        if($sql){
           echo "<script>alert('เพิ่มข้อมูลสำเร็จ');</script>";
           echo "<script>window.location.href='rewards-list.php';</script>";
-      } else {
-          echo "<script>alert('มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้ง');</script>";
-          echo "<script>window.location.href='rewards-list.php';</script>";
+        } else {
+            echo "<script>alert('มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้ง');</script>";
+            echo "<script>window.location.href='rewards-list.php';</script>";
+        }
       }
+      else {
+        echo "<script>alert('มีจำนวนครบ 8 รางวัลแล้ว ไม่สามารถเพิ่มได้อีก');</script>";
+        echo "<script>window.location.href='rewards-list.php';</script>";
+      }
+      
   }
 
 ?>

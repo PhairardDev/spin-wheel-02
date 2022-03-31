@@ -24,7 +24,6 @@ if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['str_redeem'] != "" ){
         foreach ($percentage as $percentage=>$value) {
 
             $newResult = array_merge($newResult, array_fill(0, $value, $percentage));
-
         }
 
         $result = $newResult[array_rand($newResult)];

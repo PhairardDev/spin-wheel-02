@@ -8,8 +8,8 @@ $deegreeList = [90, 270, 180, 360, 225, 45, 315, 135];
 
 $redeem = $_POST['str_redeem'];
 $degree = $_POST['code_ck'];
-
 $current = date("Y-m-d H:i:s");
+$rewards = "";
 
 $queryUsed = $db->update("UPDATE coupons SET status =?, used =? WHERE couponsCode =?", array(0,$current,$redeem));
 
@@ -24,7 +24,7 @@ $queryUsed = $db->update("UPDATE coupons SET status =?, used =? WHERE couponsCod
     } else if($degree==360){
         $rewards = "เครดิต 1000";
     } else if($degree==180){
-        $rewards = "ได้หมุนใหม่";
+        $rewards = "ได้หมุนใหม่ 1 ครั้ง";
     } else if($degree==270){
         $rewards = "เกือบได้แล้วค่ะพี่";
     } else if($degree==90){

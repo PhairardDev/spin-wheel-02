@@ -218,12 +218,31 @@
 			width: 75px;
 			height: 75px;
 			border-radius: 50%;
-			border: 4px solid #fff;
+			border: 3px solid #fff;
 			background-color: #FFF;
 			color: #fff;
 			box-shadow: 0 5px 20px #000;
 			font-weight: bold;
 			font-size: 22px;
+			cursor: pointer;
+			z-index: 3;
+		}
+
+		.reset-btn {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 75px;
+			height: 75px;
+			border-radius: 50%;
+			border: 3px solid #fff;
+			background-color: #a70000;
+			color: #FFF;
+			box-shadow: 0 5px 20px #000;
+			font-weight: bold;
+			font-size: 1.1em;
 			cursor: pointer;
 			z-index: 3;
 		}
@@ -315,7 +334,7 @@
 			}
 
 			.rule {
-				z-index: 100;
+				z-index: 9999999;
 				position: fixed;
 				width: 100%;
 				height: 150vh;
@@ -457,7 +476,7 @@
 			<div id="box1" class="box1"></div>
 			<div id="box2" class="box2"></div>
 		</div>
-
+		<button id="btn-reset" class="reset-btn" onclick="window.location.reload()">Play Again</button>
 		<button style="background-size: contain;background-image: url(https://www.ez4spinn.com/images/sbospin.png);background-position: center bottom 2px;background-repeat: no-repeat; z-index: 2;" id="btn_spin" class="spin" onclick="click_spin()"></button>
 	</div>
 
@@ -520,27 +539,6 @@
 				}
 			}
 		})
-
-		/*let rewards = ["เครดิต 50", "เครดิต 500", "เครดิต 100", "เครดิต 10", "ได้หมุนใหม่ 1 ครั้ง", "เกือบได้แล้วค่ะพี่", "ไม่ได้รางวัล", "เครดิต 1000"]
-		let item = ""
-		let item2 = ""
-		rewards.forEach(displayItems)
-
-		document.getElementById("box1").innerHTML = item
-		document.getElementById("box2").innerHTML = item2
-
-		function displayItems(rewaedItem,index){
-
-			index = index+1
-			
-			if(index >= 5){
-				index=index-4
-				item2 += '<span class="span'+index+' bg_polygon_2"><b>' +rewaedItem+ '</b></span>'
-			} else {
-				item += '<span class="span'+index+' bg_polygon"><b>' +rewaedItem+ '</b></span>'
-			}
-
-		}*/
 
 
 		$("#rule").click(function() {
@@ -640,52 +638,6 @@
 			return deg;
 		}
 
-		/*function myfunction() {
-
-			var degree = document.getElementById("code_ck").value;
-
-			//var degree = "";
-
-			console.log(degree);
-
-			$('#btn_spin').prop('disabled', true);
-
-			var x = 1024; //min value
-			var y = 9999; // max value
-
-			var deg = Math.floor(Math.random() * (x - y)) + y;
-
-			document.getElementById('box').style.transform = "rotate(" + deg + "deg)";
-			document.getElementById('box').style.transition = 'all 5s ease-out'
-
-			var element = document.getElementById('mainbox');
-			element.classList.remove('animate');
-
-			setTimeout(function() {
-				element.classList.add('animate');
-				document.getElementById('box').style.animation = "";
-
-			}, 5000); //5000 = 5 second
-
-
-			setTimeout(function() {
-
-				var str_redeem = document.getElementById("str_code_name").value;
-
-				$.ajax({
-					type: "POST",
-					url: 'api/api_coupon_use.php',
-					data: "str_redeem=" + str_redeem,
-					success: function(data) {
-						//console.log(data);
-						swal('รางวัลที่ได้', data, 'success');
-					}
-				});
-
-			}, 6000);
-
-		}*/
-
 		const wheel = document.getElementById('box');
 		const startButton = document.getElementById('btn_spin');
 		let deg = 360;
@@ -709,7 +661,7 @@
 
 			let degree = document.getElementById("code_ck").value;
 
-			//console.log(degree);
+			console.log(degree);
 
 			// Enable button when spin is over
 			startButton.style.pointerEvents = 'none';
@@ -760,8 +712,12 @@
 					url: 'api/api_coupon_use.php',
 					data: "str_redeem=" + str_redeem + "&code_ck=" + document.getElementById("code_ck").value,
 					success: function(data) {
-						//console.log(data);
+						console.log(data);
 						swal('รางวัลที่ได้', data, 'success');
+
+						document.getElementById("btn_spin").style.display = "none";
+						document.getElementById("btn-reset").style.display = "block";
+						
 						/*if(data == 'ได้หมุนใหม่'){
 							startButton.style.pointerEvents = 'visible';
 						}*/

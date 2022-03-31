@@ -28,8 +28,18 @@ class Rewards {
         return $result;
     }
 
+    public function update_order($id, $newOrder) {
+        $result = mysqli_query($this->dbcon, "UPDATE rewards SET displayOrder ='$newOrder' WHERE id='$id'");
+        return $result;
+    }
+
     public function fetchdata(){
         $result = mysqli_query($this->dbcon, "SELECT * FROM rewards ORDER BY id DESC");
+        return $result;
+    }
+
+    public function countRewards(){
+        $result = mysqli_query($this->dbcon, "SELECT COUNT(id) AS count FROM `rewards` WHERE 1");
         return $result;
     }
 

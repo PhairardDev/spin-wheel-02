@@ -18,6 +18,9 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Jquery UI style -->
+  <link rel="stylesheet" href="plugins/jquery-ui/jquery-ui.min.css">
+  
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -54,7 +57,6 @@
                 <table class="table table-striped table-valign-middle">
                   <thead>
                   <tr class="table-info">
-                    <th>#</th>
                     <th>ชื่อของรางวัล</th>
                     <th>% การได้รางวัล</th>
                     <th>ประเภทรางวัล</th>
@@ -64,14 +66,13 @@
                     <th>จัดการ</th>
                   </tr>
                   </thead>
-                  <tbody>
+                  <tbody class="sortable">
                   <?php
                       $sql = $query->fetchdata();
-                      $i = 1;
+                      //$i = 1;
                       while($row = mysqli_fetch_array($sql)){ 
                   ?>  
-                  <tr>
-                    <td><?php echo $i++; ?></td>
+                  <tr id="<?=$row['id']?>">
                     <td><?php echo $row['rewardName'] ?></td>
                     <td><?php echo $row['randomPercent'] ?> %</td>
                     <td><?php echo $row['rewardType'] ?></td>
@@ -118,19 +119,52 @@
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->
-
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Bootstrap -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE -->
 <script src="dist/js/adminlte.js"></script>
-
 <!-- OPTIONAL SCRIPTS -->
 <script src="plugins/chart.js/Chart.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard3.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		$('.sortable').sortable({
+			stop:function()
+			{
+				var ids = '';
+				$('.sortable tr').each(function(){
+					id = $(this).attr('id');
+					if(ids=='')
+					{
+						ids = id;
+					}
+					else
+					{
+						ids = ids+','+id;
+					}
+				})
+				$.ajax({
+					url:'rewards-order.php',
+					data:'ids='+ids,
+					type:'post',
+					success:function()
+					{
+            console.log(ids)
+						//alert('บันทึกอันดับแสดงผลของรางวัลเรียบร้อย');
+					}
+				})
+			}
+		});
+	});
+</script>
+
 </body>
 </html>
