@@ -27,7 +27,7 @@ $queryUsed = $db->update("UPDATE coupons SET status =?, used =? WHERE couponsCod
         $rewards = "ได้หมุนใหม่ 1 ครั้ง";
     } else if($degree==270){
         $rewards = "เกือบได้แล้วค่ะพี่";
-    } else if($degree==90){
+    } else {
         $rewards = "ไม่ได้อะไรนะคะ";
     }
 

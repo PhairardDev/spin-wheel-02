@@ -11,8 +11,8 @@ if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['str_redeem'] != "" ){
 
     if(count($query)!= 0 ){
         
-        $currDate = date('y-m-d');
-        $rewards = $db->query("SELECT rewardName,randomPercent FROM `rewards` WHERE `balanceItems` > 0 AND `endDate` > '".$currDate."' AND `status` = 1 ");
+        $currDate = date('Y-m-d');
+        $rewards = $db->query("SELECT rewardName,randomPercent FROM `rewards` WHERE `balanceItems` > 0 AND `endDate` > '".$currDate."' AND `status` = 1");
         
         foreach( $rewards as $item){
             
@@ -28,7 +28,7 @@ if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['str_redeem'] != "" ){
 
         $result = $newResult[array_rand($newResult)];
 
-        if($result=="เครดิต 10 "){
+        if($result=="เครดิต 10"){
             $code_ck = 135;
         } else if($result=="เครดิต 500"){
             $code_ck = 315;
@@ -42,7 +42,7 @@ if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['str_redeem'] != "" ){
             $code_ck = 180;
         } else if($result=="เกือบได้แล้วค่ะพี่"){
             $code_ck = 270;
-        } else if($result=="ไม่ได้อะไรนะคะ"){
+        } else {
             $code_ck = 90;
         }
         

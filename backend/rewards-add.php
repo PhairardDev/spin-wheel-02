@@ -22,7 +22,7 @@
       
       if($countItems != 8){
         
-        $sql = $query->insert($rewardName, $rewardType, $totalPerTime, $totalItems, $createBy, $percentage, $startDate, $endDate, $status, $order);
+        $sql = $query->insert($rewardName, $rewardType, $totalPerTime, $totalItems, $createBy, $percentage, $startDate, $endDate, $status);
         
         if($sql){
           echo "<script>alert('เพิ่มข้อมูลสำเร็จ');</script>";
