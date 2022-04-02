@@ -155,9 +155,8 @@
 					url:'rewards-order.php',
 					data:'ids='+ids,
 					type:'post',
-					success:function()
-					{
-            console.log(ids)
+					success:function(data){
+            console.log(data)
 						//alert('บันทึกอันดับแสดงผลของรางวัลเรียบร้อย');
 					}
 				})
