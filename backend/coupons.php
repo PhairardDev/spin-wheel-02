@@ -104,43 +104,43 @@
         </div>-->
 
 
-<!-- Modal Create Coupons -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header bg-primary">
-        <h5 class="modal-title" id="exampleModalLabel">สร้างโค้ดใหม่</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-            <form action="" method="post" requireed>
-                          <div class="row">
-                            <div class="col-lg-6">
-                              <div class="form-group">
-                                <label for="numberOfCode" class="form-label text-primary">จำนวนโค้ด</label>
-                                <input type="number" class="form-control" id="numberOfCode" name="numberOfCode" aria-describedby="Number Of Code" required>
-                                <span class="info text-gray">กรอกตัวเลข เช่น 1-10 เท่านั้น</span>
-                              </div>
-                            </div>
-                            <div class="col-lg-6">
-                              <div class="form-group">
-                                <label for="customerUser" class="form-label text-primary">Username ลูกค้า</label>
-                                <input type="text" class="form-control" id="customerUser" name="customerUser" aria-describedby="Customer User" required>
-                                <span class="info text-gray">Username ของลูกค้าที่ต้องการแจกโค้ด</span>
-                              </div>
-                            </div>
-                          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" name="createCode">Generate</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
+                  <!-- Modal Create Coupons -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                          <h5 class="modal-title" id="exampleModalLabel">สร้างโค้ดใหม่</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                              <form action="" method="post" requireed>
+                                            <div class="row">
+                                              <div class="col-lg-6">
+                                                <div class="form-group">
+                                                  <label for="numberOfCode" class="form-label text-primary">จำนวนโค้ด</label>
+                                                  <input type="number" class="form-control" id="numberOfCode" name="numberOfCode" aria-describedby="Number Of Code" required>
+                                                  <span class="info text-gray">กรอกตัวเลข เช่น 1-10 เท่านั้น</span>
+                                                </div>
+                                              </div>
+                                              <div class="col-lg-6">
+                                                <div class="form-group">
+                                                  <label for="customerUser" class="form-label text-primary">Username ลูกค้า</label>
+                                                  <input type="text" class="form-control" id="customerUser" name="customerUser" aria-describedby="Customer User" required>
+                                                  <span class="info text-gray">Username ของลูกค้าที่ต้องการแจกโค้ด</span>
+                                                </div>
+                                              </div>
+                                            </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary" name="createCode">Generate</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
 
                
                     <div class="card shadow mb-4">
