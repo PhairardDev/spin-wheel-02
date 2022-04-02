@@ -37,17 +37,13 @@ class Coupons {
         return $result;
     }
 
-    /*public function fetchrecords($userid){
-        $result = mysqli_query($this->dbcon, "SELECT * FROM tbluser WHERE id='$userid'");
+    public function fetchrecord($code){
+
+        $result = mysqli_query($this->dbcon, "SELECT rewards.rewardName AS rewardName FROM results INNER JOIN rewards ON results.rewardId = rewards.id WHERE results.couponsCode = '$code'");
         return $result;
     }
 
-    public function update($firstname, $lastname, $email, $phonenumber, $address, $userid) {
-        $result = mysqli_query($this->dbcon, "UPDATE tbluser SET firstname='$firstname', lastname='$lastname', email='$email', phonenumber='$phonenumber', address='$address' WHERE id='$userid' ");
-        return $result;
-    }
-
-    public function delete($id) {
+    /*public function delete($id) {
         $result = mysqli_query($this->dbcon, "DELETE FROM tbluser WHERE id ='$id' ");
         return $result;
     }*/
