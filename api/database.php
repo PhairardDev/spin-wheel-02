@@ -29,4 +29,9 @@ class Database {
         $stmt->execute($value);
     }
 
+    public function update_balance($update){
+        $stmt = $this->pdo->prepare($update);
+        $stmt->execute();
+    }
+
 }

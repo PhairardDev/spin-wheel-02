@@ -11,21 +11,21 @@ $degree = $_POST['code_ck'];
 $current = date("Y-m-d H:i:s");
 
     if($degree==135){
-        $order = 1;
-    } else if($degree==315){
-        $order = 2;
-    } else if($degree==45){
-        $order = 3;
-    } else if($degree==225){
-        $order = 4;
-    } else if($degree==360){
-        $order = 5;
-    } else if($degree==180){
-        $order = 6;
-    } else if($degree==270){
-        $order = 7;
-    } else if($degree==90){
         $order = 8;
+    } else if($degree==315){
+        $order = 7;
+    } else if($degree==45){
+        $order = 6;
+    } else if($degree==225){
+        $order = 5;
+    } else if($degree==360){
+        $order = 4;
+    } else if($degree==180){
+        $order = 3;
+    } else if($degree==270){
+        $order = 2;
+    } else if($degree==90){
+        $order = 1;
     }
 
     $updateBalance = $db->update("UPDATE rewards SET balanceItems = balanceItems-1 WHERE displayOrder =?", array($order));

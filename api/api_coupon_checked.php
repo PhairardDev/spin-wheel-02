@@ -27,21 +27,21 @@ if($_SERVER['REQUEST_METHOD']=='POST' && $_POST['str_redeem'] != "" ){
 
         $result = $newResult[array_rand($newResult)];
 
-        if($result==1){
+        if($result==8){
             $code_ck = 135;
-        } else if($result==2){
-            $code_ck = 315;
-        } else if($result==3){
-            $code_ck = 45;
-        } else if($result==4){
-            $code_ck = 225;
-        } else if($result==5){
-            $code_ck = 360;
-        } else if($result==6){
-            $code_ck = 180;
         } else if($result==7){
+            $code_ck = 315;
+        } else if($result==6){
+            $code_ck = 45;
+        } else if($result==5){
+            $code_ck = 225;
+        } else if($result==4){
+            $code_ck = 360;
+        } else if($result==3){
+            $code_ck = 180;
+        } else if($result==2){
             $code_ck = 270;
-        } else if($result==8){
+        } else if($result==1){
             $code_ck = 90;
         }
         

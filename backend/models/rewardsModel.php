@@ -34,7 +34,7 @@ class Rewards {
     }
 
     public function fetchdata(){
-        $result = mysqli_query($this->dbcon, "SELECT * FROM rewards ORDER BY id DESC");
+        $result = mysqli_query($this->dbcon, "SELECT * FROM rewards ORDER BY displayOrder ASC");
         return $result;
     }
 
