@@ -16,7 +16,7 @@
       $sql = $insertdata->insert($num, $customerUser, $createBy, $endDate, $status);
 
       if($sql){
-          echo "<script>alert('สร้างโค้ดสำเร็จ');</script>";
+          echo "<script>alert('สร้างโค้ดสำเร็จ')</script>";
           echo "<script>window.location.href='coupons.php';</script>";
       } else {
           echo "<script>alert('มีบางอย่างผิดพลาด กรุณาลองใหม่อีกครั้ง');</script>";
@@ -60,7 +60,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1 class="m-0">โค้ดหมุนวงล้อ</h1>
+            <h1 class="m-0">โค้ดทั้งหมด</h1>
           </div><!-- /.col -->
           
         </div><!-- /.row -->
@@ -72,12 +72,13 @@
     <div class="content">
       <div class="container-fluid">
 
-        <!-- DataTales Example -->
+        <!-- DataTales Example 
         <div class="card mb-4">
+
                         <div class="card-header py-3 bg-primary">
                             <h6 class="m-0 ">สร้างโค้ดใหม่</h6>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body">   
                           <form action="" method="post" requireed>
                           <div class="row">
                             <div class="col-lg-2">
@@ -100,11 +101,54 @@
                           <button type="submit" class="btn btn-lg btn-primary" name="createCode">สร้างโค้ด</button>
                         </div>
                         </form>
-        </div>
+        </div>-->
+
+
+<!-- Modal Create Coupons -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h5 class="modal-title" id="exampleModalLabel">สร้างโค้ดใหม่</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <form action="" method="post" requireed>
+                          <div class="row">
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                <label for="numberOfCode" class="form-label text-primary">จำนวนโค้ด</label>
+                                <input type="number" class="form-control" id="numberOfCode" name="numberOfCode" aria-describedby="Number Of Code" required>
+                                <span class="info text-gray">กรอกตัวเลข เช่น 1-10 เท่านั้น</span>
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
+                              <div class="form-group">
+                                <label for="customerUser" class="form-label text-primary">Username ลูกค้า</label>
+                                <input type="text" class="form-control" id="customerUser" name="customerUser" aria-describedby="Customer User" required>
+                                <span class="info text-gray">Username ของลูกค้าที่ต้องการแจกโค้ด</span>
+                              </div>
+                            </div>
+                          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" name="createCode">Generate</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
 
                
                     <div class="card shadow mb-4">
                         <div class="card-body">
+                          <!-- Button trigger modal -->
+                          <button type="button" class="btn btn-secondary btn-lg" data-toggle="modal" data-target="#exampleModal">
+                          <i class="fa fa-plus"></i> สร้างโค้ดใหม่
+                            </button>
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover" id="dataTable">
                                     <thead>

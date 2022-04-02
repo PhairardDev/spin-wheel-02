@@ -21,8 +21,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
-          <a href="#" class="d-block">You are : <?php echo $row['username'].' '.$row['fullname']; ?></a>
-          <a href="logout.php" class="my-2 btn btn-primary btn-sm"><i class="fa fa-arrow-left"></i> ออกจากระบบ</a>
+          <a href="#" class="d-block">Login as <?php echo $row['username'].' '.$row['fullname']; ?></a>
         </div>
       </div>
 
@@ -34,7 +33,7 @@
             <a href="coupons.php" class="nav-link">
               <i class="nav-icon fas fa-plus-square"></i>
               <p>
-                สร้างโค้ด
+                Coupons Code
                 <span class="right badge badge-danger">หมุนวงล้อ</span>
               </p>
             </a>
@@ -64,7 +63,7 @@
             </ul>
         </li>
 
-        <li class="nav-item menu-open">
+        <li class="nav-item">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-user-alt"></i>
               <p>
@@ -86,6 +85,15 @@
                 </a>
               </li>
             </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="logout.php" class="nav-link">
+              <i class="nav-icon fas fa-arrow-left"></i> 
+              <p>
+                 ออกจากระบบ
+              </p>
+            </a>
           </li>
 
           
