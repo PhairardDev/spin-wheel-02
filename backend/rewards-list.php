@@ -1,7 +1,7 @@
 <?php 
     include 'header.php';
     require("models/rewardsModel.php");
-    $insertdata = new Rewards();
+    $query = new Rewards();
 ?>
 <!DOCTYPE html>
 <html lang="en">
