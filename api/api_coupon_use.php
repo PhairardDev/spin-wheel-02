@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Bangkok');
 require_once('database.php');
 $db = new Database('localhost','spindash_db','root','');
 

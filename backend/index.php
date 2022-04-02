@@ -2,7 +2,7 @@
     include 'header.php';
     include_once("models/couponsModel.php");
 
-    $query = new Coupons();
+    $dbQuery = new Coupons();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +71,7 @@
                                     </thead>
                                     <tbody>
                                     <?php
-                                        $sql = $query->fetchdata();
+                                        $sql = $dbQuery->fetchdata();
                                         $i = 1;
                                         while($row = mysqli_fetch_array($sql)){ 
                                     ?>
@@ -85,7 +85,13 @@
                                             <td><?php if($row['status']=='1'){echo 'ยังไม่ได้ใช้งาน';}
                                             else if($row['status']=='0'){ echo 'ใช้งานแล้ว'; }
                                             else{echo 'โค้ดหมดอายุ';}?></td>
-                                            <td><?php echo $row['status'];?></td>
+                                           <td><?php 
+
+$sql2 = $dbQuery->fetchrecord($row['couponsCode']);
+$reward = mysqli_fetch_assoc($sql2);
+echo $reward['rewardName'];
+
+?></td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
