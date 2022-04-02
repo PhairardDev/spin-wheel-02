@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>เพิ่มผู้ใช้ใหม่ - Spin Dashboard</title>
+  <title>ข้อมูลผู้ใช้ - Spin Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -30,7 +30,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12">
-            <h1>เพิ่มผู้ใช้ใหม่</h1>
+            <h1>ข้อมูลผู้ใช้</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -41,15 +41,15 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           <!-- left column -->
-          <div class="col-md-8">
+          <div class="col-md-12">
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">เพิ่มผู้ใช้ใหม่</h3>
+                <h3 class="card-title">User Profile</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action="signup_db.php" method="post">
+              <form action="user-profile-db.php" method="post">
               <?php if(isset($_SESSION['error'])){ ?>
                     <div class="alert alert-danger alert-dismissible m-2" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -80,30 +80,33 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" aria-describedby="Username">
+                    <input type="text" class="form-control" id="username" name="username" aria-describedby="Username" value="<?=$row['username']?>" readonly>
                   </div>
                   <div class="form-group">
                     <label for="fullname" class="form-label">Full name</label>
-                    <input type="text" class="form-control" id="fullname" name="fullname" aria-describedby="Full name">
+                    <input type="text" class="form-control" id="fullname" name="fullname" aria-describedby="Full name" value="<?=$row['fullname']?>" readonly>
                   </div>
                   <div class="form-group">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" aria-describedby="Email">
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="Email" value="<?=$row['email']?>" readonly>
                   </div>
                   <div class="form-group">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password">
+                    <hr>
+                    <label class="form-label text-danger">เปลี่ยนรหัสผ่านใหม่</label>
                   </div>
                   <div class="form-group">
-                    <label for="confirmPassword" class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
+                    <label for="password" class="form-label">New Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
                   </div>
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary mr-2" name="signup">Add User</button>
-                  <a href="user-list.php" class="btn btn-secondary">Cancel</a>
+                  <button type="submit" class="btn btn-primary mr-2" name="update">Update</button>
                 </div>
               </form>
             </div>

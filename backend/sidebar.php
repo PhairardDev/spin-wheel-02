@@ -20,8 +20,8 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="info">
-          <a href="#" class="d-block">Login as <?php echo $row['username'].' '.$row['fullname']; ?></a>
+        <div class="info text-lg">
+          <a href="user-edit.php" class="d-block">Login as <?php echo $row['username']; ?></a>
         </div>
       </div>
 
