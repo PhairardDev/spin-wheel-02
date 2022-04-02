@@ -205,7 +205,8 @@ function click_spin() {
                 if(data == 'ได้หมุนใหม่ 1 ครั้ง'){
                     $('#code_ck').val();
                     $('#code_up').val();
-                    window.location.reload()
+                    setTimeout(location.reload.bind(location), 5000);
+                    //window.location.reload()
                 }
                 else {
                     document.getElementById("btn_spin").style.display = "none"

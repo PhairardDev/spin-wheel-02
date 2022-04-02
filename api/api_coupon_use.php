@@ -8,9 +8,10 @@ $deegreeList = [90, 270, 180, 360, 225, 45, 315, 135];
 
 $redeem = $_POST['str_redeem'];
 $degree = $_POST['code_ck'];
-$current = date("Y-m-d H:i:s");
+$date = date_create();
+$current = date_format($date, 'Y-m-d H:i:s');
 
-    if($degree==135){
+   if($degree==135){
         $order = 8;
     } else if($degree==315){
         $order = 7;
@@ -44,7 +45,6 @@ $current = date("Y-m-d H:i:s");
     else {
         echo $rewardName;
     }
-
     
 } 
 else {
