@@ -16,9 +16,9 @@ class Rewards {
         }
     }
 
-    public function insert($rewardName, $rewardType, $totalPerTime, $totalItems, $createBy, $percentage, $startDate, $endDate, $status) {
+    public function insert($rewardName, $rewardType, $totalPerTime, $totalItems, $createBy, $percentage, $startDate, $endDate, $status, $newOrder) {
   
-        $result = mysqli_query($this->dbcon, "INSERT INTO rewards(rewardName, rewardType, randomPercent, totalPerTime, totalItems, balanceItems, startDate, endDate, createBy, status) VALUES('$rewardName', '$rewardType', '$percentage', '$totalPerTime', '$totalItems', '$totalItems', '$startDate', '$endDate', '$createBy', '$status')");
+        $result = mysqli_query($this->dbcon, "INSERT INTO rewards(rewardName, rewardType, randomPercent, totalPerTime, totalItems, balanceItems, startDate, endDate, createBy, status, displayOrder) VALUES('$rewardName', '$rewardType', '$percentage', '$totalPerTime', '$totalItems', '$totalItems', '$startDate', '$endDate', '$createBy', '$status', '$newOrder')");
         return $result;
         
     }
@@ -35,6 +35,11 @@ class Rewards {
 
     public function fetchdata(){
         $result = mysqli_query($this->dbcon, "SELECT * FROM rewards ORDER BY displayOrder ASC");
+        return $result;
+    }
+
+    public function fetchorder(){
+        $result = mysqli_query($this->dbcon, "SELECT MAX(displayOrder) AS latest FROM rewards WHERE 1");
         return $result;
     }
 

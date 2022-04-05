@@ -15,6 +15,10 @@
       $startDate = date('Y-m-d', strtotime($_POST['startDate']));
       $endDate = date('Y-m-d', strtotime($_POST['endDate']));
       $status = '1';
+      
+      $orderCheck = $query->fetchorder();
+      $maxOrder = mysqli_fetch_assoc($orderCheck);
+      $newOrder =  (($maxOrder['latest'])+1);
 
       $result = $query->countRewards();
       $items = mysqli_fetch_assoc($result);
@@ -22,7 +26,7 @@
       
       if($countItems != 8){
         
-        $sql = $query->insert($rewardName, $rewardType, $totalPerTime, $totalItems, $createBy, $percentage, $startDate, $endDate, $status);
+        $sql = $query->insert($rewardName, $rewardType, $totalPerTime, $totalItems, $createBy, $percentage, $startDate, $endDate, $status, $newOrder);
         
         if($sql){
           echo "<script>alert('เพิ่มข้อมูลสำเร็จ');</script>";
