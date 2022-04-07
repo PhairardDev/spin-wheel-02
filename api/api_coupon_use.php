@@ -36,7 +36,7 @@ $current = date_format($date, 'Y-m-d H:i:s');
     $rewardId = $queryRewardId[0]['id'];
     $rewardName = $queryRewardId[0]['rewardName'];
 
-    if($rewardName != "ได้หมุนใหม่ 1 ครั้ง"){
+    if($rewardName != "ได้หมุนใหม่ 1 ครั้ง" || $rewardName != "Free spin"){
 
         $queryUsed = $db->update("UPDATE coupons SET status =?, used =? WHERE couponsCode =?", array(0,$current,$redeem));
         $sqlResult = $db->insert("INSERT results(couponsCode, rewardId, updateDate, status) VALUE(?,?,?,?)", array($redeem,$rewardId,$current,1));
