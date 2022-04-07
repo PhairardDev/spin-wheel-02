@@ -202,7 +202,7 @@ function click_spin() {
                 //console.log(data);
                 swal('รางวัลที่ได้', data, 'success')
 
-                if(data == 'ได้หมุนใหม่ 1 ครั้ง'){
+                if(data == 'ได้หมุนใหม่ 1 ครั้ง' || data == 'Free spin'){
                     $('#code_ck').val();
                     $('#code_up').val();
                     setTimeout(location.reload.bind(location), 5000);
