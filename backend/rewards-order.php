@@ -5,9 +5,10 @@ $query = new Rewards();
 
 $ids = $_POST['ids'];
 $arr = explode(',',$ids);
+
 for($i=1;$i<=count($arr);$i++)
 {
-	$q = $query->update_order($i,$arr[$i-1]);
+	$q = $query->update_order($arr[$i-1],$i);
 }
 
 if($q) {

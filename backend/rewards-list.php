@@ -139,12 +139,13 @@
 		$('.sortable').sortable({
 			stop:function()
 			{
-				var ids = '';
+				let ids = '';
+
 				$('.sortable tr').each(function(){
-					id = $(this).attr('id');
+					id = $(this).attr('id')
 					if(ids=='')
 					{
-						ids = id;
+						ids = id
 					}
 					else
 					{
@@ -156,8 +157,9 @@
 					data:'ids='+ids,
 					type:'post',
 					success:function(data){
-            console.log(data)
-						//alert('บันทึกอันดับแสดงผลของรางวัลเรียบร้อย');
+            //console.log(data)
+            //console.log(ids)
+						alert('บันทึกอันดับแสดงผลของรางวัลเรียบร้อย');
 					}
 				})
 			}
