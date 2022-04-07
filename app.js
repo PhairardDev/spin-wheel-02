@@ -202,11 +202,10 @@ function click_spin() {
                 //console.log(data);
                 swal('รางวัลที่ได้', data, 'success')
 
-                if(data == 'ได้หมุนใหม่ 1 ครั้ง' || data == 'Free spin'){
+                if(data.includes('Free') || data.includes('ใหม่')){
                     $('#code_ck').val();
                     $('#code_up').val();
-                    setTimeout(location.reload.bind(location), 5000);
-                    //window.location.reload()
+                    setTimeout(location.reload.bind(location), 4000);
                 }
                 else {
                     document.getElementById("btn_spin").style.display = "none"

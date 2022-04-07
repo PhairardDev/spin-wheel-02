@@ -36,14 +36,21 @@ $current = date_format($date, 'Y-m-d H:i:s');
     $rewardId = $queryRewardId[0]['id'];
     $rewardName = $queryRewardId[0]['rewardName'];
 
-    if($rewardName != "ได้หมุนใหม่ 1 ครั้ง" || $rewardName != "Free spin"){
+    if (!function_exists('str_contains')) {
+        function str_contains(string $haystack, string $needle): bool {
+            return '' === $needle || false !== strpos($haystack, $needle);
+        }
+    }
 
-        $queryUsed = $db->update("UPDATE coupons SET status =?, used =? WHERE couponsCode =?", array(0,$current,$redeem));
-        $sqlResult = $db->insert("INSERT results(couponsCode, rewardId, updateDate, status) VALUE(?,?,?,?)", array($redeem,$rewardId,$current,1));
+    if(str_contains($rewardName, 'Free') || str_contains($rewardName, 'ใหม่')){
 
         echo $rewardName;
     }
     else {
+
+        $queryUsed = $db->update("UPDATE coupons SET status =?, used =? WHERE couponsCode =?", array(0,$current,$redeem));
+        $sqlResult = $db->insert("INSERT results(couponsCode, rewardId, updateDate, status) VALUE(?,?,?,?)", array($redeem,$rewardId,$current,1));
+
         echo $rewardName;
     }
     
