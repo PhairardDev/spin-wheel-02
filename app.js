@@ -84,22 +84,10 @@ btn_redeem.onclick = function() {
                     $('#code_up').val(str_redeem);
                     $('#btn_spin').prop('disabled', false);
 
-                } else if (data == 400) {
+                } else if (data == 400 || data == 300) {
 
                     swal('Message', 'ไม่สามารถใช้ Code นี้ได้ กรุณาลองใหม่อีกครั้ง', 'error');
 
-                } else if (data == 300) {
-
-                    $.ajax({
-                        type: "POST",
-                        url: 'api/api_coupon_retrun.php',
-                        data: "str_redeem=" + str_redeem,
-                        success: function(data) {
-                            //swal('รางวัลที่ได้',data,'success');
-                            swal('Message', 'ไม่สามารถใช้ Code นี้ได้ กรุณาลองใหม่อีกครั้ง', 'error');
-
-                        }
-                    });
                 }
             }
         });
