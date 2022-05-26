@@ -72,38 +72,6 @@
     <div class="content">
       <div class="container-fluid">
 
-        <!-- DataTales Example 
-        <div class="card mb-4">
-
-                        <div class="card-header py-3 bg-primary">
-                            <h6 class="m-0 ">สร้างโค้ดใหม่</h6>
-                        </div>
-                        <div class="card-body">   
-                          <form action="" method="post" requireed>
-                          <div class="row">
-                            <div class="col-lg-2">
-                              <div class="form-group">
-                                <label for="numberOfCode" class="form-label">ใส่จำนวนโค้ดที่ต้องการสร้าง</label>
-                                <input type="number" class="form-control" id="numberOfCode" name="numberOfCode" aria-describedby="Number Of Code" required>
-                                <span class="info">กรอกตัวเลข เช่น 1-10 เท่านั้น</span>
-                              </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                              <div class="form-group">
-                                <label for="customerUser" class="form-label">Username ลูกค้า</label>
-                                <input type="text" class="form-control" id="customerUser" name="customerUser" aria-describedby="Customer User" required>
-                                <span class="info">Username ของลูกค้าที่ต้องการแจกโค้ด</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card-footer">
-                          <button type="submit" class="btn btn-lg btn-primary" name="createCode">สร้างโค้ด</button>
-                        </div>
-                        </form>
-        </div>-->
-
-
                   <!-- Modal Create Coupons -->
                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -115,7 +83,7 @@
                           </button>
                         </div>
                         <div class="modal-body">
-                              <form action="" method="post" requireed>
+                              <form action="" method="post" required>
                                             <div class="row">
                                               <div class="col-lg-6">
                                                 <div class="form-group">
@@ -135,7 +103,7 @@
                         </div>
                         <div class="modal-footer">
                           <button type="submit" class="btn btn-primary" name="createCode">Generate</button>
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         </div>
                         </form>
                       </div>
@@ -254,7 +222,7 @@ echo $reward['rewardName'];
       "lengthChange": false,
       "searching": true,
       "ordering": false,
-      "info": true,
+      "info": false,
       "autoWidth": false,
       "responsive": true,
     });
