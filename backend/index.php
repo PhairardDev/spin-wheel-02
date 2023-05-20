@@ -46,17 +46,17 @@
     </div>
     <!-- /.content-header -->
 
-    <!-- Main content -->
-    <div class="content">
+<!-- Main content -->
+<div class="content">
       <div class="container-fluid">
-          
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3 bg-primary">
-                            <h6 class="m-0">รายการโค้ดทั้งหมด</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+            <div class="card card-primary card-tabs">
+              <div class="card-header">
+                <h4 class="p-1">โค้ดที่ใช้งานแล้ว</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                                <table class="table table-bordered table-hover dataTable" id="dataTable02">
                                     <thead>
                                         <tr class="table-info">
                                             <th>#</th>
@@ -64,47 +64,41 @@
                                             <th>ชื่อผู้ใช้</th>
                                             <th>ถูกสร้างเมื่อ</th>
                                             <th>ใช้งานเมื่อ</th>
-                                            <th>วันหมดอายุ</th>
-                                            <th>สถานะโค้ด</th>
                                             <th>รางวัลที่ได้</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php
-                                        $sql = $dbQuery->fetchdata();
+                                        $sql = $dbQuery->fetchdata_used();
                                         $i = 1;
                                         while($row = mysqli_fetch_array($sql)){ 
                                     ?>
                                         <tr>
-                                            <td><?php echo $i++; ?></td>
+                                        <td><?php echo $i++; ?></td>
                                             <td><?php echo $row['couponsCode'];?></td>
                                             <td><?php echo $row['customerUsername'];?></td>
                                             <td><?php echo $row['createDate'];?></td>
                                             <td><?php echo $row['used'];?></td>
-                                            <td><?php echo $row['endDate'];?></td>
-                                            <td><?php if($row['status']=='1'){echo 'ยังไม่ได้ใช้งาน';}
-                                            else if($row['status']=='0'){ echo 'ใช้งานแล้ว'; }
-                                            else{echo 'โค้ดหมดอายุ';}?></td>
-                                           <td><?php 
-
-$sql2 = $dbQuery->fetchrecord($row['couponsCode']);
-$reward = mysqli_fetch_assoc($sql2);
-echo $reward['rewardName'];
-
-?></td>
+                                           <td><?php echo $row['rewardName'];?></td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
+                 
                             </div>
-                        </div>
-                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card -->
+            </div>
+          
+
             </div>
             <!-- /.container-fluid -->
         </div>
         <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+    </div>
+    <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -154,8 +148,9 @@ echo $reward['rewardName'];
 <script src="dist/js/pages/dashboard3.js"></script>
 <script>
   $(function () {
-    $('#dataTable').DataTable({
+    $('.dataTable').DataTable({
       "paging": true,
+      "pageLength": 50,
       "lengthChange": false,
       "searching": true,
       "ordering": false,

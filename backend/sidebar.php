@@ -29,15 +29,35 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         
-         <li class="nav-item">
-            <a href="coupons.php" class="nav-link">
-              <i class="nav-icon fas fa-plus-square"></i>
+          <li class="nav-item menu-open">
+            <a href="coupons.php" class="nav-link ">
+              <i class="nav-icon fas fa-star"></i>
               <p>
-                Coupons Code
-                <span class="right badge badge-danger">หมุนวงล้อ</span>
+                โค้ดหมุน
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-          </li>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="coupons-add.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>สร้างโค้ดใหม่</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="coupons.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>โค้ดทั้งหมด</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="index.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>รายการสรุปผลรางวัล</p>
+                </a>
+              </li>
+            </ul>
+        </li>
         
         <li class="nav-item menu-open">
             <a href="#" class="nav-link ">

@@ -33,21 +33,18 @@ class Coupons {
     }
 
     public function fetchdata(){
-        $result = mysqli_query($this->dbcon, "SELECT * FROM coupons ORDER BY id DESC");
+        $result = mysqli_query($this->dbcon, "SELECT * FROM coupons WHERE status = 1 ORDER BY id DESC");
         return $result;
     }
 
-    public function fetchrecord($code){
-
-        $result = mysqli_query($this->dbcon, "SELECT rewards.rewardName AS rewardName FROM results INNER JOIN rewards ON results.rewardId = rewards.id WHERE results.couponsCode = '$code'");
+    public function fetchdata_used() {
+        $result = mysqli_query($this->dbcon, "SELECT c.*, r2.rewardName FROM results r1,`coupons` c JOIN rewards r2 WHERE r1.`couponsCode` = c.couponsCode AND r1.rewardId = r2.id");
         return $result;
     }
 
-    /*public function delete($id) {
-        $result = mysqli_query($this->dbcon, "DELETE FROM tbluser WHERE id ='$id' ");
-        return $result;
-    }*/
-
-
+    /*SELECT c.couponsCode, c.customerUsername, c.createDate, c.used, c.endDate, c.status, r2.rewardName AS rewardName FROM coupons c INNER JOIN results r1 ON r1.couponsCode = c.couponsCode
+        INNER JOIN rewards r2 ON r1.rewardId = r2.id
+        WHERE c.status = 0
+        ORDER BY c.id DESC */
 
 }

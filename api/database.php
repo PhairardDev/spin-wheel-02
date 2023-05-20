@@ -10,11 +10,12 @@ class Database {
     }
 
     public function query($show){
+
         $stmt = $this->pdo->prepare($show);
         $stmt->execute();
 
         if($show){
-            $data = $stmt->fetchAll();
+            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $data;
         }
     }
