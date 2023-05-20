@@ -154,7 +154,7 @@
       "lengthChange": false,
       "searching": true,
       "ordering": false,
-      "info": true,
+      "info": false,
       "autoWidth": false,
       "responsive": true,
     });
